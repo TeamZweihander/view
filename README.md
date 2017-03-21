@@ -8,12 +8,12 @@
 ---
 
 
-### <center>Team View <span style="color: brown">:fa-eye:</span> members
-##### <center> <a href="https://avinashsingh786.github.io" target="_blank">[:fa-github: Avinash Singh <br/>](https://avinashsingh786.github.io/) </a>
+### <center>Team View <span style="color: brown">:eyes:</span> members
+##### <center> <a href="https://avinashsingh786.github.io" target="_blank">[:octocat: Avinash Singh <br/>](https://avinashsingh786.github.io/) </a>
 
-##### <center> [:fa-github: Hlengekile Jita <br/> ](https://github.com/u14077893)
+##### <center> [:octocat: Hlengekile Jita <br/> ](https://github.com/u14077893)
 
-##### <center> [:fa-github: Ruan Klinkert <br/> ](https://RuanKlinkert.github.io)
+##### <center> [:octocat: Ruan Klinkert <br/> ](https://RuanKlinkert.github.io)
 
-##### <center> [:fa-github: Unarine Rambani <br/> ](https://github.com/u14004489)
+##### <center> [:octocat: Unarine Rambani <br/> ](https://github.com/u14004489)
 
