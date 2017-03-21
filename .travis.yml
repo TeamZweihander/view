@@ -32,9 +32,10 @@ before_script:
   - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/23.0.2
+  - chmod 777 build.sh
 
 script:
   - ./build.sh
 
-notifications:
-  slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
+#notifications:
+  #slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
