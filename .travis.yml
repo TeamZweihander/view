@@ -16,6 +16,9 @@ addons:
 env:
   CXX=g++-4.8
 
+before_install:
+  - cd NavUP
+
 install:
   - npm install -g gulp bower cordova ionic
   - npm install
@@ -34,7 +37,6 @@ before_script:
   - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/23.0.2
 
 script:
-  - cd NavUP
   - cordova prepare
 
 notifications:
