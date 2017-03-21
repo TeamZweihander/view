@@ -1,4 +1,4 @@
-sudo: true
+sudo: false
 
 language: node_js
 node_js:
@@ -16,12 +16,10 @@ addons:
 env:
   CXX=g++-4.8
 
-
-
 install:
-  - sudo npm install -g gulp bower cordova ionic
-  - sudo npm install
-  - sudo bower update
+  - npm install -g gulp bower cordova ionic
+  - npm install
+  - bower update
 
 before_script:
   - wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
@@ -36,7 +34,7 @@ before_script:
   - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/23.0.2
 
 script:
-  - build.sh
+  - ./build.sh
 
 notifications:
   slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
