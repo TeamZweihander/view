@@ -1,3 +1,7 @@
+![Build](https://travis-ci.org/TeamZweihander/view.svg?branch=master)
+[![Stories in Ready](https://badge.waffle.io/TeamZweihander/view.svg?label=ready&title=Ready)](http://waffle.io/TeamZweihander/view)
+[![Stories in Progress](https://badge.waffle.io/TeamZweihander/view.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/TeamZweihander/view)
+
 ## <center>Software Engineering :hotsprings:</center>
 ## <center>Team View :calling: :computer:</center>
 ---
