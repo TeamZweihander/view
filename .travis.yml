@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 
 language: node_js
 node_js:
@@ -17,11 +17,12 @@ env:
   CXX=g++-4.8
 
 before_install:
-  - cd NavUP
+  - sudo cd NavUP
 
 install:
-  - npm install -g gulp bower cordova ionic
-  - npm install
+  - sudo cd NavUP
+  - sudo npm install -g gulp bower cordova ionic
+  - sudo npm install
   - bower update
 
 before_script:
