@@ -21,3 +21,25 @@
 
 ##### <center> [:octocat: Unarine Rambani <br/> ](https://github.com/u14004489)
 
+
+---
+### Installation
+##### Dependencies
+        - Nodejs v6+
+        - Npm 
+        - Android SDK
+        
+##### Setup
+        - cd NavUP
+        - sudo npm install -g gulp bower cordova ionic
+        - sudo npm install
+        - bower update
+        
+##### Run
+        - ionic serve
+        
+##### Build Android
+        - ionic build android
+        
+##### Build IOS
+        - ionic build ios
