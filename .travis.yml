@@ -17,10 +17,10 @@ env:
   CXX=g++-4.8
 
 before_install:
-  - sudo cd NavUP
+  - cd NavUP
 
 install:
-  - sudo cd NavUP
+  - cd NavUP
   - sudo npm install -g gulp bower cordova ionic
   - sudo npm install
   - bower update
