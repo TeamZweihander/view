@@ -38,7 +38,7 @@ before_script:
   - chmod 777 build.sh
 
 script:
-  - ./build.sh
+  - cordova prepare
 
 notifications:
   slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
