@@ -37,5 +37,5 @@ before_script:
 script:
   - ./build.sh
 
-#notifications:
-  #slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
+notifications:
+  slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
