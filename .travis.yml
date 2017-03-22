@@ -16,6 +16,9 @@ addons:
 env:
   CXX=g++-4.8
 
+before_install:
+  - cd $TRAVIS_BUILD_DIR/NavUP
+
 install:
   - npm install -g gulp bower cordova ionic
   - npm install
