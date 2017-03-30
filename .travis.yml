@@ -40,5 +40,5 @@ script:
   - cordova platform add android
   - cordova prepare
 
-#notifications:
-#  slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
+notifications:
+  slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
