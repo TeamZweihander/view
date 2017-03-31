@@ -17,7 +17,7 @@ env:
   CXX=g++-4.8
 
 install:
-  - npm install -g gulp bower cordova ionic
+  - npm install -g gulp bower cordova ionic karma jasmine angular-cli
   - npm install
   - bower update
 
