@@ -30,10 +30,11 @@
         - Android SDK
         
 ##### Setup
-        - cd NavUP
         - sudo npm install -g gulp bower cordova ionic
         - sudo npm install
         - bower update
+        - ionic platform add android
+        - ionic platform add ios
         
 ##### Run
         - ionic serve
