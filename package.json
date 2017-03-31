@@ -7,7 +7,8 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/common": "2.4.8",
@@ -25,7 +26,22 @@
     "ionicons": "3.0.0",
     "rxjs": "5.0.1",
     "sw-toolbox": "3.4.0",
-    "zone.js": "0.7.2"
+    "zone.js": "0.7.2",
+    "karma-cli": "",
+    "angular-cli": "",
+    "codecov":"",
+    "jasmine-core": "",
+    "jasmine-spec-reporter": "",
+    "karma": "",
+    "karma-chrome-launcher": "",
+    "karma-jasmine": "",
+    "karma-mocha-reporter": "",
+    "karma-remap-istanbul": "",
+    "ts-node": "",
+    "tslint": "",
+    "tslint-eslint-rules": "",
+    "@types/jasmine": "",
+    "@types/node": ""
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
