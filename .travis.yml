@@ -35,7 +35,7 @@ before_script:
 
 script:
   - ionic platform add android
-  - cordova prepare
+  - npm test
 
 notifications:
   slack: teamzweihander:fdv625vY5JlgK7FusVqYXcfn
