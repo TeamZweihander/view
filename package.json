@@ -8,7 +8,7 @@
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
-    "test": "ng test"
+    "test": "ng test --single-run"
   },
   "dependencies": {
     "@angular/common": "2.4.8",
@@ -29,7 +29,7 @@
     "zone.js": "0.7.2",
     "karma-cli": "",
     "angular-cli": "",
-    "codecov":"",
+    "codecov": "",
     "jasmine-core": "",
     "jasmine-spec-reporter": "",
     "karma": "",
@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
+    "karma": "^1.5.0",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
