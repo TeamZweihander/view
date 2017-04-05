@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Nav, Platform} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import {API} from "../util/API";
+import {LoginPage} from "../pages/login/login";
+import {RegisterPage} from "../pages/register/register";
 
 
 @Component({
@@ -12,7 +14,9 @@ import {API} from "../util/API";
 })
 
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
   rootPage = TabsPage;
+  pages: Array<{title: string, component: any}>
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -21,5 +25,14 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
     });
+    this.pages = [
+      { title: 'Login', component: LoginPage },
+      { title: 'Register', component: RegisterPage }];
+  }
+
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(page.component);
   }
 }
