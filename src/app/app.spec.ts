@@ -6,7 +6,7 @@ import {HomePage} from "../pages/home/home";
 import {MyApp} from "./app.component";
 import {IonicModule, TabButton} from "ionic-angular";
 import {TabsPage} from "../pages/tabs/tabs";
-
+import {} from "@types/jasmine"
 
 let comp: MyApp;
 let fixture: ComponentFixture<MyApp>;
