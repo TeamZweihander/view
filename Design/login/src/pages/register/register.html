@@ -1,0 +1,27 @@
+<ion-content class="register-content" padding >
+  <ion-navbar>
+  <ion-title>
+	<img style="width: 60px" src="../../assets/images/UP-logo.jpg">
+  </ion-title>
+</ion-navbar>
+  
+  <div class="register-box">
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+			<ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email"></ion-input>
+			<ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password"></ion-input>   
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+  </div>
+</ion-content>
