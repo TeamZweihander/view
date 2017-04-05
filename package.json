@@ -20,6 +20,9 @@
     "@angular/platform-browser": "2.4.8",
     "@angular/platform-browser-dynamic": "2.4.8",
     "@angular/platform-server": "2.4.8",
+    "@ionic-native/core": "3.1.0",
+    "@ionic-native/splash-screen": "3.1.0",
+    "@ionic-native/status-bar": "3.1.0",
     "@ionic/storage": "2.0.0",
     "ionic-angular": "2.2.0",
     "ionic-native": "2.8.1",
@@ -38,7 +41,7 @@
     "karma-mocha-reporter": "",
     "karma-remap-istanbul": "",
     "ts-node": "",
-    "tslint": "",
+    "tslint": "^4.5.0",
     "tslint-eslint-rules": "",
     "@types/jasmine": "",
     "@types/node": ""
@@ -46,7 +49,7 @@
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
     "karma": "^1.5.0",
-    "typescript": "2.0.9"
+    "typescript": "2.1.6"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
