@@ -16,7 +16,7 @@
     <ion-list>
 
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <span [innerHTML]="p.title | sanitizeHTML"></span>
+        {{ pagesHTML(p)}}
       </button>
 
     </ion-list>

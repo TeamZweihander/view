@@ -7,11 +7,9 @@ import {API} from "../util/API";
 import {LoginPage} from "../pages/login/login";
 import {RegisterPage} from "../pages/register/register";
 
-
 @Component({
   templateUrl: 'app.html',
   providers: [API]
-
 })
 
 export class MyApp {
@@ -21,6 +19,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   avatar = "../assets/images/user_avatar.svg";
   name = "Guest";
+
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

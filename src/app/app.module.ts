@@ -37,6 +37,6 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     LoginPage,
     RegisterPage
   ],
-  providers: [StatusBar, SplashScreen, AuthService, SanitizeHtml, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
