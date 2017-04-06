@@ -29,8 +29,8 @@ export class MyApp {
       Splashscreen.hide();
     });
     this.pages = [
-      { title: '<ion-icon ios="ios-log-in" md="md-log-in"> </ion-icon> Login', component: LoginPage },
-      { title: '<ion-icon ios="ios-open" md="md-open"> </ion-icon> Register', component: RegisterPage }];
+      { title: 'Login', component: LoginPage },
+      { title: 'Register', component: RegisterPage }];
   }
 
   openPage(page) {
