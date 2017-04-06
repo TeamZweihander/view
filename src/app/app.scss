@@ -14,3 +14,24 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.user {
+  background-image: url('../assets/images/user_background.jpeg');
+  height: 150px;
+  background-size: cover;
+}
+
+.user_avatar {
+  float: right;
+  height: 80px;
+  width: 80px;
+  background-color: gray;
+  border-radius: 50%;
+
+}
+
+.user_name {
+  font-size: 150%;
+  color: white;
+  padding-left: 10px;
+}

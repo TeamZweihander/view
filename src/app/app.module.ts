@@ -10,6 +10,7 @@ import { AuthService } from '../providers/auth-service';
 import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
+import {SanitizeHtml} from "../util/sanitizeHTML";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {StatusBar} from "@ionic-native/status-bar";
     HomePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    SanitizeHtml
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,6 +37,6 @@ import {StatusBar} from "@ionic-native/status-bar";
     LoginPage,
     RegisterPage
   ],
-  providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, AuthService, SanitizeHtml, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

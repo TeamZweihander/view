@@ -11,12 +11,16 @@ import {RegisterPage} from "../pages/register/register";
 @Component({
   templateUrl: 'app.html',
   providers: [API]
+
 })
 
 export class MyApp {
+
   @ViewChild(Nav) nav: Nav;
   rootPage = TabsPage;
-  pages: Array<{title: string, component: any}>
+  pages: Array<{title: string, component: any}>;
+  avatar = "../assets/images/user_avatar.svg";
+  name = "Guest";
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -26,8 +30,8 @@ export class MyApp {
       Splashscreen.hide();
     });
     this.pages = [
-      { title: 'Login', component: LoginPage },
-      { title: 'Register', component: RegisterPage }];
+      { title: '<ion-icon ios="ios-log-in" md="md-log-in"> </ion-icon> Login', component: LoginPage },
+      { title: '<ion-icon ios="ios-open" md="md-open"> </ion-icon> Register', component: RegisterPage }];
   }
 
   openPage(page) {
