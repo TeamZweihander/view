@@ -32,7 +32,7 @@ export class HomePage {
       let mapOptions = {
         center: latLng,
         zoom: 50,
-        mapTypeId: google.maps.MapTypeId.SATELLITE
+        mapTypeId: google.maps.MapTypeId.ROAD
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
