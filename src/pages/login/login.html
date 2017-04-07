@@ -1,28 +1,35 @@
-<ion-content class="login-content" padding >
+<ion-content class="login-content">
   <ion-navbar>
-  <ion-title>
-	<img style="width: 60px" src="../../assets/images/UP-logo.jpg">
-  </ion-title>
-</ion-navbar>
-  
+    <img style="width: 60px; float: left" src="../../assets/images/UP-logo.jpg">
+    <h1 >NavUP</h1>
+  </ion-navbar>
+
   <div class="login-box">
     <form (ngSubmit)="login()" #registerForm="ngForm">
+      <h3 text-center>Login</h3>
       <ion-row>
         <ion-col>
           <ion-list inset>
-			<ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email"></ion-input>
-			<ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password"></ion-input>   
+            <ion-item>
+              <ion-label floating>Email</ion-label>
+			        <ion-input type="email" name="email" [(ngModel)]="registerCredentials.email" autofocus></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating="">Password</ion-label>
+			        <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password"></ion-input>
+            </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
-      
+
       <ion-row>
         <ion-col class="signup-col">
           <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
           <button ion-button class="register-btn" type="button" block clear (click)="createAccount()">Create New Account</button>
         </ion-col>
       </ion-row>
-      
+
     </form>
   </div>
 </ion-content>
