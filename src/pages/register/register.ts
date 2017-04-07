@@ -10,9 +10,9 @@ import { AuthService } from '../../providers/auth-service';
 export class RegisterPage {
  loading: Loading;
   registerCredentials = {email: '', password: ''};
-	
+
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
-  
+
   public register() {
     this.showLoading();
     this.auth.register(this.registerCredentials).subscribe(allowed => {
@@ -29,19 +29,19 @@ export class RegisterPage {
       this.showError(error);
     });
   }
- 
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     this.loading.present();
   }
- 
+
   showError(text) {
     setTimeout(() => {
       this.loading.dismiss();
     });
- 
+
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
@@ -49,5 +49,4 @@ export class RegisterPage {
     });
     alert.present(prompt);
   }
-
 }
