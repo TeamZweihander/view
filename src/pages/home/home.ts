@@ -12,6 +12,8 @@ export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  searchQuery: string = '';
+  items: string[];
 
   constructor(public navCtrl: NavController) {
 
@@ -29,11 +31,12 @@ export class HomePage {
 
       let mapOptions = {
         center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+        zoom: 50,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+      };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.addMarker("ME");
 
     }, (err) => {
       console.log(err);
@@ -41,12 +44,13 @@ export class HomePage {
 
   }
 
-  addMarker(){
+  addMarker(status){
 
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
+      position: this.map.getCenter(),
+      icon: status == "ME" ? '../../assets/images/icon-man.png' : ''
     });
 
     let content = "<h4>Information!</h4>";
@@ -65,6 +69,27 @@ export class HomePage {
       infoWindow.open(this.map, marker);
     });
 
+  }
+
+  initializeItems() {
+    this.items = [
+      'EMB 2-22',
+      'I.T 2-25',
+      'I.T 2-27',
+      'Oom Gertz'
+    ];
+  }
+
+  getItems(ev: any) {
+    this.initializeItems();
+
+    let val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }
