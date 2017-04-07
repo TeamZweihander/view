@@ -22,40 +22,34 @@ ion-app.md [padding], ion-app.md [padding] .scroll-content {
 }
 
 page-register {
- 
+
   .register-content {
-	background: url('../../assets/images/Arc-Architects-Our-Projects-UP-Study-Center-Cover.jpg') no-repeat center center fixed; 
+	background: url('../../assets/images/Arc-Architects-Our-Projects-UP-Study-Center-Cover.jpg') no-repeat center center fixed;
 	background-size: cover;
-	
-	ion-navbar{
-		background-color: white;
-		padding: 0px;
-		margin: 0px;
-	}
-	
+
+    ion-navbar{
+      background-color: white;
+      padding: 10px;
+    }
+
 	ion-input {
 		width: calc(100% - 30px);
 	}
- 
+
     .register-box {
       background: #ffffff;
       padding: 20px 20px 20px 20px;
 	  margin: 30px;
 	   box-shadow: 2px 2px 2px #333333;
     }
-	
+
 	.scroll-content {
-		margin: 0px !important;
-		overflow-y: hidden;
-	}
-	
-	ion-input {
-		border-style: solid;
-		border-color: #000;
-		border-width: 2px;
-		margin: 15px;
-	}
- 
+    margin: 0px !important;
+    overflow-y: hidden;
   }
- 
+
+  }
+  h2 {
+    text-align: center !important;
+  }
 }
