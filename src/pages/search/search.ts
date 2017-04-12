@@ -13,52 +13,83 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+   items;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
-  }
+   slides = [
+    {
+      title: "Welcome to the Docs!",
+      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
+    },
+    {
+      title: "What is Ionic?",
+      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+    },
+    {
+      title: "What is Ionic Cloud?",
+      description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
+    }
+  ];
 
-}
-
-export class HomePage {
-private items: string[];
-
-  query: string = "";
-  listitme:string= '' ;
-
-  constructor(private navCtrl: NavController) {
+  constructor() {
     this.initializeItems();
   }
 
   initializeItems() {
     this.items = [
-      'Harvey Burton',
-      'Barnett Crosby',
-      'Peck Brock',
-      'Rachel Robinson',
-      'Suzette Frazier',
-      'Bettie Maddox',
-      'Haley Bates',
-      'Tania Chandler',
-      'Woods Nicholson'
-    ]
+      'Amsterdam',
+      'Bogota',
+      'Buenos Aires',
+      'Cairo',
+      'Dhaka',
+      'Edinburgh',
+      'Geneva',
+      'Genoa',
+      'Glasglow',
+      'Hanoi',
+      'Hong Kong',
+      'Islamabad',
+      'Istanbul',
+      'Jakarta',
+      'Kiel',
+      'Kyoto',
+      'Le Havre',
+      'Lebanon',
+      'Lhasa',
+      'Lima',
+      'London',
+      'Los Angeles',
+      'Madrid',
+      'Manila',
+      'New York',
+      'Olympia',
+      'Oslo',
+      'Panama City',
+      'Peking',
+      'Philadelphia',
+      'San Francisco',
+      'Seoul',
+      'Taipeh',
+      'Tel Aviv',
+      'Tokio',
+      'Uelzen',
+      'Washington'
+    ];
   }
 
-  getItems() {
-    // Here you can add your console.log(...);
-    console.log('The search button has been clicked...');
-
+  getItems(ev) {
+    // Reset items back to all of the items
     this.initializeItems();
-    let val = this.query
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+      }).slice(0, 4); 
+
     }
   }
 
-  setitem(item){
-    this.listitme = item;
-  }
 }

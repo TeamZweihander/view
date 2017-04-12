@@ -1,3 +1,43 @@
 page-search {
+   .background {
+       background-color: transparent;
+       padding: 5%;
+   }
 
+   .slider {
+       width: 700px;
+   }
+
+   .container {
+       width: auto;
+       overflow-x: scroll;
+       overflow-y: hidden;
+   }
+
+   $color: rgb(195, 0, 0);
+
+   .icon-circle {
+        position: relative;
+        display: inline-block;
+        margin: 5px;
+
+        width: 50px;
+        height: 50px; 
+        font-size: 24px; 
+        
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
+        border-radius: 50%;
+
+        background: $color;
+        text-align:center;
+
+        color: white;
+    }
+
+    .icon-circle-outline {
+        border: 2px solid $color;
+        background: transparent;
+        color: $color;
+    }
 }
