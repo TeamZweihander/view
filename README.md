@@ -30,9 +30,8 @@
         - Android SDK
         
 ##### Setup
-        - sudo npm install -g gulp bower cordova ionic
+        - sudo npm install -g bower cordova ionic karma jasmine angular-cli tslint typescript
         - sudo npm install
-        - bower update
         - ionic platform add android
         - ionic platform add ios
         
@@ -44,3 +43,8 @@
         
 ##### Build IOS
         - ionic build ios
+
+##### Unit Test
+Unit tests are done through using testing frameworks, this app uses Karma with Jasmine tests and is run using angular-cli. You can test the application by using the command
+
+        - npm test
