@@ -53,7 +53,7 @@ export class HomePage {
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter(),
-      icon: status == "ME" ? '../../assets/images/icon-man.png' : ''
+      icon: status == "ME" ? '/assets/images/icon-man.png' : ''
     });
 
     let content = "<h4>Information!</h4>";

@@ -17,7 +17,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage = TabsPage;
   pages: Array<{title: string, component: any}>;
-  avatar = "../assets/images/user_avatar.svg";
+  avatar = "assets/images/user_avatar.svg";
   name = "Guest";
 
 
