@@ -22,24 +22,27 @@ export class HomePage {
   ionViewDidLoad(){
     this.loadMap();
   }
+  menu() {
 
+  }
   loadMap(){
+    let options = {timeout: 10000, enableHighAccuracy: true};
 
-    Geolocation.getCurrentPosition().then((position) => {
-
+    Geolocation.getCurrentPosition(options).then((position) => {
+      console.log("fun");
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
       let mapOptions = {
         center: latLng,
         zoom: 50,
-        mapTypeId: google.maps.MapTypeId.ROAD
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.addMarker("ME");
 
     }, (err) => {
-      console.log(err);
+      console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
     });
 
   }
