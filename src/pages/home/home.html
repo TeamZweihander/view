@@ -19,5 +19,11 @@
   </ion-list>
 
   <div #map id="map"></div>
+
+  <ion-tabs>
+    <ion-tab [root]="tab1Root" tabTitle="0.0 KM" tabIcon="flag"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="000 Steps" tabIcon="walk"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="Navigate" tabIcon="send" disabled></ion-tab>
+  </ion-tabs>
 </ion-content>
 

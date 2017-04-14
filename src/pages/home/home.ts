@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import {LoginPage} from "../login/login";
+import {RegisterPage} from "../register/register";
 
 declare var google;
 
@@ -14,6 +16,9 @@ export class HomePage {
   map: any;
   searchQuery: string = '';
   items: string[];
+  tab1Root: any = HomePage;
+  tab2Root: any = LoginPage;
+  tab3Root: any = RegisterPage;
 
   constructor(public navCtrl: NavController) {
 
