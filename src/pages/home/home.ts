@@ -95,4 +95,10 @@ export class HomePage {
     }
   }
 
+  onCancel(ev: any) {
+    this.items = null;
+    return this.items;
+  }
+
+
 }
