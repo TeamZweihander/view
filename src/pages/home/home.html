@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)" (ionCancel)="onCancel($event)"  (search)="search($event)" [showCancelButton]="true"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="destination" (ionInput)="getItems($event)" (ionCancel)="onCancel($event)" [showCancelButton]="true"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of items" (click)="setDestination(item)">
       {{ item }}
@@ -37,7 +37,7 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button color="light" (click)="navigate()" disabled>
+          <button #nav id="nav" ion-button color="light" (click)="navigate()" [disabled]="isNavigate()">
             <ion-icon name="send"></ion-icon>
             <span>Navigate</span>
           </button>

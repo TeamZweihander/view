@@ -13,13 +13,14 @@ declare var google;
 export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('navigate') navigatebtn: ElementRef;
+  @ViewChild('nav') navigatebtn: ElementRef;
   map: any;
   searchQuery: string = '';
   items: string[];
   distanceValue: any = 0.0;
   steps: any = 0;
-  destination: string;
+  destination: string = "";
+  canNavigate: boolean = true;
 
 
   constructor(public navCtrl: NavController, public  alertCtrl: AlertController) {
@@ -107,15 +108,10 @@ export class HomePage {
     return this.items;
   }
 
-  search(ev: any){
-    this.items = null;
-    return this.items;
-  }
-
   distance() {
     let alert = this.alertCtrl.create({
       title: 'Distance',
-      subTitle: 'Number of Meters to your destination. <br/> <ion-badge text-center>'+this.distanceValue+'</ion-badge> Meters',
+      subTitle: 'Number of Meters to your destination. <br/> <ion-badge text-center><b>'+this.distanceValue+'</b></ion-badge> Meters',
       buttons: ['Dismiss']
     });
     alert.present();
@@ -124,7 +120,7 @@ export class HomePage {
   step() {
     let alert = this.alertCtrl.create({
       title: 'Step',
-      subTitle: 'The estimated number of steps to get your to your destination. <br/> <ion-badge text-center>'+this.steps+'</ion-badge> Steps',
+      subTitle: 'The estimated number of steps to get your to your destination. <br/> <ion-badge text-center><b>'+this.steps+'</b></ion-badge> Steps',
       buttons: ['Dismiss']
     });
     alert.present();
@@ -132,16 +128,39 @@ export class HomePage {
 
   navigate() {
     let alert = this.alertCtrl.create({
-      title: 'Navigate',
-      subTitle: 'Are you sure ? <br/>This is the destination you have selected <br/><i text-center>'+this.destination+'</i>',
-      buttons: ['Dismiss']
+      title: 'Are you sure ?',
+      message: 'This is the destination you have selected <br/><i text-center><b>'+this.destination+'</b></i>',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Start',
+          role: 'success',
+          handler: () => {
+            console.log('Got to Navigation page');
+          }
+        }
+      ]
     });
     alert.present();
   }
 
   setDestination(ev: any) {
-    this.destination = ev;
-    this.navigatebtn.nativeElement.enable();
+    this.items = null;
+    if (ev != "") {
+      this.canNavigate = false;
+      this.destination = ev;
+    }
+  }
+  isNavigate() {
+    if (this.destination == "")
+      return true;
+    return this.canNavigate;
   }
 
 }
