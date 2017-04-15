@@ -1,8 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
-import {Modal} from "../modal/modal";
-
 
 declare var google;
 
@@ -30,9 +28,8 @@ export class HomePage {
   ionViewDidLoad(){
     this.loadMap();
   }
-  menu() {
 
-  }
+
   loadMap(){
     let options = {timeout: 10000, enableHighAccuracy: true};
 
@@ -111,7 +108,7 @@ export class HomePage {
   distance() {
     let alert = this.alertCtrl.create({
       title: 'Distance',
-      subTitle: 'Number of Meters to your destination. <br/> <ion-badge text-center><b>'+this.distanceValue+'</b></ion-badge> Meters',
+      subTitle: 'Number of Meters to your destination. <br/> <span text-center><b>'+this.distanceValue+'</b></span> Meters',
       buttons: ['Dismiss']
     });
     alert.present();
@@ -120,7 +117,7 @@ export class HomePage {
   step() {
     let alert = this.alertCtrl.create({
       title: 'Step',
-      subTitle: 'The estimated number of steps to get your to your destination. <br/> <ion-badge text-center><b>'+this.steps+'</b></ion-badge> Steps',
+      subTitle: 'The estimated number of steps to get your to your destination. <br/> <span text-center><b>'+this.steps+'</b></span> Steps',
       buttons: ['Dismiss']
     });
     alert.present();
