@@ -13,7 +13,7 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" (ionCancel)="onCancel($event)"  (search)="search($event)" [showCancelButton]="true"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let item of items" (click)="setDestination(item)">
       {{ item }}
     </ion-item>
   </ion-list>
@@ -27,7 +27,7 @@
         <ion-col>
           <button ion-button color="light" (click)="distance()" >
             <ion-icon name="flag"></ion-icon>
-            <span id="distance">0.0 KM</span>
+            <span id="distance">0.0 M</span>
           </button>
         </ion-col>
         <ion-col>
@@ -37,7 +37,7 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button color="light" (click)="navigate()" >
+          <button ion-button color="light" (click)="navigate()" disabled>
             <ion-icon name="send"></ion-icon>
             <span>Navigate</span>
           </button>
