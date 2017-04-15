@@ -13,9 +13,14 @@ declare var google;
 export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
+  @ViewChild('navigate') navigatebtn: ElementRef;
   map: any;
   searchQuery: string = '';
   items: string[];
+  distanceValue: any = 0.0;
+  steps: any = 0;
+  destination: string;
+
 
   constructor(public navCtrl: NavController, public  alertCtrl: AlertController) {
 
@@ -110,7 +115,7 @@ export class HomePage {
   distance() {
     let alert = this.alertCtrl.create({
       title: 'Distance',
-      subTitle: 'Number of Meters to your destination',
+      subTitle: 'Number of Meters to your destination. <br/> <ion-badge text-center>'+this.distanceValue+'</ion-badge> Meters',
       buttons: ['Dismiss']
     });
     alert.present();
@@ -119,14 +124,24 @@ export class HomePage {
   step() {
     let alert = this.alertCtrl.create({
       title: 'Step',
-      subTitle: 'The estimated number of steps to get your to your destination',
+      subTitle: 'The estimated number of steps to get your to your destination. <br/> <ion-badge text-center>'+this.steps+'</ion-badge> Steps',
       buttons: ['Dismiss']
     });
     alert.present();
   }
 
   navigate() {
+    let alert = this.alertCtrl.create({
+      title: 'Navigate',
+      subTitle: 'Are you sure ? <br/>This is the destination you have selected <br/><i text-center>'+this.destination+'</i>',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
 
+  setDestination(ev: any) {
+    this.destination = ev;
+    this.navigatebtn.nativeElement.enable();
   }
 
 }
