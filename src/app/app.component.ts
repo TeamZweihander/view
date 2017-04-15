@@ -6,6 +6,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {API} from "../util/API";
 import {LoginPage} from "../pages/login/login";
 import {RegisterPage} from "../pages/register/register";
+import {HomePage} from "../pages/home/home";
 
 @Component({
   templateUrl: 'app.html',
@@ -15,7 +16,7 @@ import {RegisterPage} from "../pages/register/register";
 export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
-  rootPage = TabsPage;
+  rootPage = HomePage;
   pages: Array<{title: string, component: any}>;
   avatar = "assets/images/user_avatar.svg";
   name = "Guest";
