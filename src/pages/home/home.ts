@@ -11,7 +11,7 @@ declare var google;
 export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('nav') navigatebtn: ElementRef;
+
   map: any;
   searchQuery: string = '';
   items: string[];
@@ -20,15 +20,12 @@ export class HomePage {
   destination: string = "";
   canNavigate: boolean = true;
 
-
   constructor(public navCtrl: NavController, public  alertCtrl: AlertController) {
-
   }
 
   ionViewDidLoad(){
     this.loadMap();
   }
-
 
   loadMap(){
     let options = {timeout: 10000, enableHighAccuracy: true};
@@ -49,7 +46,6 @@ export class HomePage {
     }, (err) => {
       console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
     });
-
   }
 
   addMarker(status){
