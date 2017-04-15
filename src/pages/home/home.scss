@@ -12,5 +12,30 @@
     }
 
   }
+  .button-inner {
+    flex-flow: column;
+  }
 
+  button span {
+    padding-top: 5px;
+    font-size: small;
+    padding-bottom: 5px;
+  }
+  button {
+    height: 100%;
+    width: 100%;
+  }
+
+  ion-col {
+    padding: 0 !important;
+  }
+  ion-grid {
+    padding: 0;
+  }
+  ion-footer {
+    padding: 0;
+  }
+  .ion-icon {
+    font-size: larger !important;
+  }
 }

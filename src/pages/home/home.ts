@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, AlertController} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import {Modal} from "../modal/modal";
+
 
 declare var google;
 
@@ -15,7 +17,7 @@ export class HomePage {
   searchQuery: string = '';
   items: string[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController) {
 
   }
 
@@ -100,5 +102,31 @@ export class HomePage {
     return this.items;
   }
 
+  search(ev: any){
+    this.items = null;
+    return this.items;
+  }
+
+  distance() {
+    let alert = this.alertCtrl.create({
+      title: 'Distance',
+      subTitle: 'Number of Meters to your destination',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  step() {
+    let alert = this.alertCtrl.create({
+      title: 'Step',
+      subTitle: 'The estimated number of steps to get your to your destination',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  navigate() {
+
+  }
 
 }
