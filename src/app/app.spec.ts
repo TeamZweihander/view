@@ -6,6 +6,7 @@ import {MyApp} from "./app.component";
 import {IonicModule} from "ionic-angular";
 import {TabsPage} from "../pages/tabs/tabs";
 import {} from "@types/jasmine"
+import {HomePage} from "../pages/home/home";
 
 let comp: MyApp;
 let fixture: ComponentFixture<MyApp>;
@@ -50,7 +51,7 @@ describe('Component: Root Component', () => {
     });
 
     it('initialises with a root page of Tabs page', () => {
-        expect(comp['rootPage']).toBe(TabsPage);
+        expect(comp['rootPage']).toBe(HomePage);
     });
 
 });
