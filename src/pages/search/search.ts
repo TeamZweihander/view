@@ -44,12 +44,20 @@ export class SearchPage {
   }
 
   selectFilter(event, filter) {
-    this.filterOptionId = filter.id;
+    if(!event.target.classList.contains("icon-circle-checked"))
+    {
+      this.filterOptionId = filter.id;
 
-    var filterButtons = document.getElementsByName('filterButton');
-    for(var i = 0; i < filterButtons.length; i++)
-      filterButtons.item(i).classList.remove("icon-circle-checked");
-    event.target.classList.add("icon-circle-checked");
+      var filterButtons = document.getElementsByName('filterButton');
+      for(var i = 0; i < filterButtons.length; i++)
+        filterButtons.item(i).classList.remove("icon-circle-checked");
+      event.target.classList.add("icon-circle-checked");
+    }
+    else
+    {
+      this.filterOptionId = 0;
+      event.target.classList.remove("icon-circle-checked");
+    }
   }
 
   initializeItems() {
