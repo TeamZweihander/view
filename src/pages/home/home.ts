@@ -46,6 +46,7 @@ export class HomePage {
 
   presentModal() {
     let modal = this.modalCtrl.create(SearchPage);
+    modal.onDidDismiss(data => {alert(JSON.stringify(data))});
     modal.present();
   }
 

@@ -7,8 +7,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class SearchPage {
 
-  filterOptionId;
-  locationId;
+  filterOptionId = 0;
 
   items = [];
   baseClassFilterButton = "icon-circle-filled";
@@ -55,31 +54,31 @@ export class SearchPage {
 
   initializeItems() {
     this.items = [
-      {name : 'Amsterdam', distance : '420', id : "1"},
-      {name : 'Bogota', distance : '666', id : "2"},
-      {name : 'Buenos Aires', distance : '420', id : "3"},
-      {name : 'Cairo', distance : '666', id : "4"},
-      {name : 'Dhaka', distance : '420', id : "5"},
-      {name : 'Edinburgh', distance : '666', id : "6"},
-      {name : 'Geneva', distance : '420', id : "7"},
-      {name : 'Genoa', distance : '666', id : "8"}
+      {name : 'Amsterdam', distance : '420', id : "1", type : "1"},
+      {name : 'Bogota', distance : '666', id : "2", type : "1"},
+      {name : 'Buenos Aires', distance : '420', id : "3", type : "1"},
+      {name : 'Cairo', distance : '666', id : "4", type : "1"},
+      {name : 'Dhaka', distance : '420', id : "5", type : "2"},
+      {name : 'Edinburgh', distance : '666', id : "6", type : "2"},
+      {name : 'Geneva', distance : '420', id : "7", type : "2"},
+      {name : 'Genoa', distance : '666', id : "8", type : "2"}
     ];
   }
 
   getItems(ev) {
     var val = ev.target.value;
 
-    if (val && val.trim() != '') {
-      //Until I know where to send the request and what to expect i can't do anything
-      this.initializeItems();
-      this.items = this.items.filter((item) => {
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
-      this.items = this.items.slice(0, 4); 
-      //
-
-
-    }
+    //Until I know where to send the request and what to expect i can't do anything
+    this.initializeItems();
+    this.items = this.items.filter((item) => {
+      if(val && val.trim() != '')
+        if(this.filterOptionId != 0) 
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 && item.type == this.filterOptionId);
+        else return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      else return false;
+    });
+    this.items = this.items.slice(0, 4); 
+    //
 
    
   }
