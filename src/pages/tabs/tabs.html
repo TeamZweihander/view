@@ -1,5 +1,6 @@
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Login" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Register" tabIcon="contacts"></ion-tab>
+  <!--<ion-tab [root]="tab2Root" tabTitle="Login" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Register" tabIcon="contacts"></ion-tab> I'm sorry but i really don't like that the login and register has tab buttons-->
+  <ion-tab (ionSelect)="presentModal()" tabTitle="Seacrh" tabIcon="search"></ion-tab>
 </ion-tabs>
