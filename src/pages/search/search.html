@@ -1,6 +1,6 @@
 <ion-header id="page">
   <ion-navbar>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" (ionCancel)="dismiss($event)" [showCancelButton]="true" ></ion-searchbar>
 
     <div class="container">
       <ion-card id="filterList">
