@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {NavController, AlertController} from 'ionic-angular';
+import {NavController, AlertController, ModalController} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import {SearchPage} from "../search/search";
 
 declare var google;
 
@@ -14,13 +15,13 @@ export class HomePage {
 
   map: any;
   searchQuery: string = '';
-  items: string[];
+
   distanceValue: any = 0.0;
   steps: any = 0;
   destination: string = "";
-  canNavigate: boolean = true;
+  canNavigate: boolean = false;
 
-  constructor(public navCtrl: NavController, public  alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad(){
@@ -75,32 +76,6 @@ export class HomePage {
 
   }
 
-  initializeItems() {
-    this.items = [
-      'EMB 2-22',
-      'I.T 2-25',
-      'I.T 2-27',
-      'Oom Gertz'
-    ];
-  }
-
-  getItems(ev: any) {
-    this.initializeItems();
-
-    let val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  onCancel(ev: any) {
-    this.items = null;
-    return this.items;
-  }
-
   distance() {
     let alert = this.alertCtrl.create({
       title: 'Distance',
@@ -143,17 +118,20 @@ export class HomePage {
     alert.present();
   }
 
-  setDestination(ev: any) {
-    this.items = null;
-    if (ev != "") {
-      this.canNavigate = false;
-      this.destination = ev;
-    }
-  }
   isNavigate() {
-    if (this.destination == "")
-      return true;
     return this.canNavigate;
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(SearchPage);
+    modal.onDidDismiss(data => {
+      alert(JSON.stringify(data));
+      if (data.name != null) {
+        this.destination = data.name;
+        this.canNavigate = true;
+      }
+    });
+    modal.present();
   }
 
 }

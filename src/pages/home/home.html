@@ -2,7 +2,9 @@
   <ion-navbar>
     <ion-title>
       <ion-icon ios="ios-menu" md="md-menu" menuToggle></ion-icon> <span padding-left="5px">Home</span>
+      <ion-icon (click)="presentModal()" name="search" class="pull-right"></ion-icon>
     </ion-title>
+
     <!--<ion-buttons end>-->
       <!--&lt;!&ndash;<button ion-button (click)="addMarker()"><ion-icon ios="ios-search" md="md-search"></ion-icon></button>&ndash;&gt;-->
     <!--</ion-buttons>-->
@@ -11,14 +13,8 @@
 </ion-header>
 
 <ion-content>
-  <!--<ion-searchbar [(ngModel)]="destination" (ionInput)="getItems($event)" (ionCancel)="onCancel($event)" [showCancelButton]="true"></ion-searchbar>-->
-  <!--<ion-list>-->
-    <!--<ion-item *ngFor="let item of items" (click)="setDestination(item)">-->
-      <!--{{ item }}-->
-    <!--</ion-item>-->
-  <!--</ion-list>-->
 
-  <div #map id="map" style="height: 70%;" color="light"></div>
+    <div #map id="map" style="height: 80%;" color="light"></div>
 
 </ion-content>
 <ion-footer color="light">
@@ -37,7 +33,7 @@
           </button>
         </ion-col>
         <ion-col>
-          <button #nav id="nav" ion-button color="light" (click)="navigate()" [disabled]="isNavigate()">
+          <button #nav id="nav" ion-button color="light" (click)="navigate()" [disabled]="!isNavigate()">
             <ion-icon name="send"></ion-icon>
             <span>Navigate</span>
           </button>
