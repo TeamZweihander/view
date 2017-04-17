@@ -6,12 +6,12 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { SearchPage } from '../pages/search/search';
 import { AuthService } from '../providers/auth-service';
 import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SanitizeHtml} from "../util/sanitizeHTML";
-import {Modal} from "../pages/modal/modal";
 
 
 @NgModule({
@@ -23,8 +23,8 @@ import {Modal} from "../pages/modal/modal";
     TabsPage,
     LoginPage,
     RegisterPage,
-    SanitizeHtml,
-    Modal
+    SearchPage,
+    SanitizeHtml
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +38,7 @@ import {Modal} from "../pages/modal/modal";
     TabsPage,
     LoginPage,
     RegisterPage,
-    Modal
+    SearchPage
   ],
   providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
