@@ -45,8 +45,7 @@ export class API {
         .catch(this.handleError);
     }
 
-    remove(url, data) {
-      let body = JSON.stringify(data);
+    remove(url) {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
       return this.http.delete(baseURL + url, options)
