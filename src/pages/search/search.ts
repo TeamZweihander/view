@@ -1,33 +1,27 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
-/*
-  Generated class for the Search page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html'
 })
 export class SearchPage {
 
-  filterOption;
+  filterOptionId;
   locationId;
 
   items = [];
   baseClassFilterButton = "icon-circle-filled";
   
   filters = [
-      { Value: "Cart", Icon: "cart"}, 
-      { Value: "Paw", Icon: "paw" }, 
-      { Value: "Paw", Icon: "paw" }, 
-      { Value: "Paw", Icon: "paw" }, 
-      { Value: "Paw", Icon: "paw" }, 
-      { Value: "Paw", Icon: "paw" }, 
-      { Value: "Paw", Icon: "paw" }, 
-      { Value: "Paw", Icon: "paw" }
+      { value: "Cart", icon: "cart", id : "1"}, 
+      { value: "Paw", icon: "paw", id : "2" }, 
+      { value: "Cart", icon: "cart", id : "3" }, 
+      { value: "Paw", icon: "paw", id : "4" }, 
+      { value: "Cart", icon: "cart", id : "5" }, 
+      { value: "Paw", icon: "paw", id : "6" }, 
+      { value: "Cart", icon: "cart", id : "7" }, 
+      { value: "Paw", icon: "paw", id : "8" }
     ];
 
   constructor(private viewCtrl: ViewController) { }
@@ -37,8 +31,6 @@ export class SearchPage {
   }
 
   ngAfterViewInit() {
-    this.initializeItems();
-    this.items = this.items.slice(0, 4); 
     this.initFilterList();
   }
 
@@ -53,7 +45,7 @@ export class SearchPage {
   }
 
   selectFilter(event, filter) {
-    this.filterOption = filter;
+    this.filterOptionId = filter.id;
 
     var filterButtons = document.getElementsByName('filterButton');
     for(var i = 0; i < filterButtons.length; i++)
@@ -63,61 +55,33 @@ export class SearchPage {
 
   initializeItems() {
     this.items = [
-      'Amsterdam',
-      'Bogota',
-      'Buenos Aires',
-      'Cairo',
-      'Dhaka',
-      'Edinburgh',
-      'Geneva',
-      'Genoa',
-      'Glasglow',
-      'Hanoi',
-      'Hong Kong',
-      'Islamabad',
-      'Istanbul',
-      'Jakarta',
-      'Kiel',
-      'Kyoto',
-      'Le Havre',
-      'Lebanon',
-      'Lhasa',
-      'Lima',
-      'London',
-      'Los Angeles',
-      'Madrid',
-      'Manila',
-      'New York',
-      'Olympia',
-      'Oslo',
-      'Panama City',
-      'Peking',
-      'Philadelphia',
-      'San Francisco',
-      'Seoul',
-      'Taipeh',
-      'Tel Aviv',
-      'Tokio',
-      'Uelzen',
-      'Washington'
+      {name : 'Amsterdam', distance : '420', id : "1"},
+      {name : 'Bogota', distance : '666', id : "2"},
+      {name : 'Buenos Aires', distance : '420', id : "3"},
+      {name : 'Cairo', distance : '666', id : "4"},
+      {name : 'Dhaka', distance : '420', id : "5"},
+      {name : 'Edinburgh', distance : '666', id : "6"},
+      {name : 'Geneva', distance : '420', id : "7"},
+      {name : 'Genoa', distance : '666', id : "8"}
     ];
   }
 
   getItems(ev) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the ev target
     var val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
+      //Until I know where to send the request and what to expect i can't do anything
+      this.initializeItems();
       this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      }); 
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+      this.items = this.items.slice(0, 4); 
+      //
+
+
     }
 
-    this.items = this.items.slice(0, 4); 
+   
   }
 
 }

@@ -5,16 +5,20 @@
     <div class="container">
       <ion-card id="filterList">
         <button name="filterButton" (click)="selectFilter($event, filter)" ion-button *ngFor="let filter of filters">
-          <ion-icon name="{{filter.Icon}}" item-left></ion-icon>
+          <ion-icon name="{{filter.icon}}" item-left></ion-icon>
         </button>
       </ion-card>
     </div>
 
     <ion-card *ngIf="items.length != 0">
       <ion-list>
-        <button ion-item (click)="dismiss(true)" *ngFor="let item of items">
-          {{ item }}
-        </button>
+        <ion-item ion-item (click)="dismiss(item)" *ngFor="let item of items">
+            <ion-avatar item-left>
+                <ion-icon name="pin"></ion-icon>
+            </ion-avatar>
+            <h2> {{item.name}} </h2>
+            <p>{{item.distance}} meters</p>
+        </ion-item>
       </ion-list>
     </ion-card>
 
