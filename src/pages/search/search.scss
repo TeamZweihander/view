@@ -1,0 +1,58 @@
+page-search {
+     $color: rgb(195, 0, 0);
+     $color-checked: rgb(0, 0, 195);
+
+   .background {
+       background-color: transparent;
+
+       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+   }
+
+   .container {
+       width: auto;
+       overflow-x: scroll;
+       overflow-y: hidden;
+
+       box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.0);
+   }
+
+   .icon-circle {
+        position: relative;
+        display: inline-block;
+        margin: 5px;
+
+        width: 50px;
+        height: 50px; 
+        font-size: 18px; 
+        
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
+        border-radius: 50%;
+
+        text-align:center; 
+    }
+
+    .icon-circle-filled {
+        @extend .icon-circle;
+        background: $color;
+        color: white;
+    }
+
+    .icon-circle-outline {
+        @extend .icon-circle;
+        border: 2px solid $color;
+        background: transparent;
+        color: $color;
+    }
+
+    .icon-circle.icon-circle-checked {
+        background: $color-checked;
+    }
+
+    .icon-circle-outline.icon-circle-checked {
+        border: 2px solid $color-checked;
+        background: transparent;
+        color: $color-checked;
+    }
+    
+}
