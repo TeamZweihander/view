@@ -2,9 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
-import { ModalController } from 'ionic-angular';
-import { SearchPage } from '../search/search';
-
 declare var google;
 
 @Component({
@@ -16,7 +13,7 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController) {
 
   }
 
@@ -42,12 +39,6 @@ export class HomePage {
       console.log(err);
     });
 
-  }
-
-  presentModal() {
-    let modal = this.modalCtrl.create(SearchPage);
-    modal.onDidDismiss(data => {alert(JSON.stringify(data))});
-    modal.present();
   }
 
   addMarker(){
