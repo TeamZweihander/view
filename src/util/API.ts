@@ -27,7 +27,7 @@ export class API {
             .catch(this.handleError);
     }
 
-    post(data, url) {
+    post(url, data) {
         let body = JSON.stringify(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -35,6 +35,17 @@ export class API {
             .map(res => res.json())
             .catch(this.handleError);
     }
+
+    patch(url, data) {
+      let body = JSON.stringify(data);
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.patch(baseURL + url, body, options)
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
+
+
 
     handleError(error) {
         console.error(error);
