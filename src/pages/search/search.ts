@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 /*
   Generated class for the Search page.
@@ -13,25 +13,52 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-   items;
+  filterOption;
+  locationId;
 
-   slides = [
-    {
-      title: "Welcome to the Docs!",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
-    },
-    {
-      title: "What is Ionic?",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
-    },
-    {
-      title: "What is Ionic Cloud?",
-      description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
-    }
-  ];
+  items = [];
+  baseClassFilterButton = "icon-circle-filled";
+  
+  filters = [
+      { Value: "Cart", Icon: "cart"}, 
+      { Value: "Paw", Icon: "paw" }, 
+      { Value: "Paw", Icon: "paw" }, 
+      { Value: "Paw", Icon: "paw" }, 
+      { Value: "Paw", Icon: "paw" }, 
+      { Value: "Paw", Icon: "paw" }, 
+      { Value: "Paw", Icon: "paw" }, 
+      { Value: "Paw", Icon: "paw" }
+    ];
 
-  constructor() {
+  constructor(private viewCtrl: ViewController) { }
+
+  dismiss(data) {
+    this.viewCtrl.dismiss(data);
+  }
+
+  ngAfterViewInit() {
     this.initializeItems();
+    this.items = this.items.slice(0, 4); 
+    this.initFilterList();
+  }
+
+  initFilterList() {
+    var filterButtons = document.getElementsByName('filterButton');
+    for(var i = 0; i < filterButtons.length; i++)
+      filterButtons.item(i).classList.add(this.baseClassFilterButton);
+
+    var filterList = document.getElementById('filterList');
+    if((this.filters.length * 60) > document.getElementById('filterList').clientWidth - (document.getElementById('filterList').offsetLeft * 2))
+      filterList.style.width = this.filters.length * 60 + "px";
+  }
+
+  selectFilter(event, filter) {
+    this.filterOption = filter;
+
+    var filterButtons = document.getElementsByName('filterButton');
+    for(var i = 0; i < filterButtons.length; i++)
+      filterButtons.item(i).classList.remove("icon-circle-checked");
+    event.target.classList.add("icon-circle-checked");
   }
 
   initializeItems() {
@@ -87,9 +114,10 @@ export class SearchPage {
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      }).slice(0, 4); 
-
+      }); 
     }
+
+    this.items = this.items.slice(0, 4); 
   }
 
 }

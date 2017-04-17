@@ -1,26 +1,24 @@
-<div class="background">
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+<ion-header id="page">
+  <ion-navbar>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
-  <div class="container">
-    <ion-card class="slider">
-      <button class="icon-circle" ion-button><ion-icon name="cart" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="medical" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="paw" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="beer" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="planet" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="cart" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="medical" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="paw" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="beer" item-left></ion-icon></button>
-      <button class="icon-circle" ion-button><ion-icon name="planet" item-left></ion-icon></button>
+    <div class="container">
+      <ion-card id="filterList">
+        <button name="filterButton" (click)="selectFilter($event, filter)" ion-button *ngFor="let filter of filters">
+          <ion-icon name="{{filter.Icon}}" item-left></ion-icon>
+        </button>
+      </ion-card>
+    </div>
+
+    <ion-card *ngIf="items.length != 0">
+      <ion-list>
+        <button ion-item (click)="dismiss(true)" *ngFor="let item of items">
+          {{ item }}
+        </button>
+      </ion-list>
     </ion-card>
-  </div>
 
-  <ion-card>
-    <ion-list>
-       <button ion-item *ngFor="let item of items">
-      {{ item }}
-      </button>
-    </ion-list>
-  </ion-card>
-</div>
+    <!--<strong *ngIf="items.length == 0">No locations found ¯\\_(ツ)_/¯</strong>-->
+
+  </ion-navbar>
+</ion-header>
