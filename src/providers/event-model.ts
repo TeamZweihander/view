@@ -15,7 +15,8 @@ import {LocationModel} from "./location-model";
 export class EventModel {
 
   public id: number;
-  public name: string;
+  public title: string;
+  public description: string;
   public image: string;
   public date: DateModel;
   public to: TimeModel;
