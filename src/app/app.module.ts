@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
-import { EventsListPage } from '../pages/event-list/event-list';
+import { EventsListPage } from '../pages/events-list/events-list';
 import { AuthService } from '../providers/auth-service';
 import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
