@@ -11,8 +11,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DestinationModel {
 
-  constructor(public http: Http) {
-    console.log('Hello DestinationModel Provider');
-  }
+  public id: number;
+  public name: string;
+  public lat: number;
+  public lon: number;
+  public distance: number;
 
 }
