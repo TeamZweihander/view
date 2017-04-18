@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DateModel {
 
-  constructor(public http: Http) {
-    console.log('Hello DateModel Provider');
-  }
+  public day: string;
+  public month: string;
+  public year: string;
 
 }
