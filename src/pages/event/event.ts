@@ -12,11 +12,13 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'event.html'
 })
 export class EventPage {
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) 
+  {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EventPage');
   }
+
+  
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavController } from 'ionic-angular';
+import { EventPage } from '../event/event';
 
 /*
   Generated class for the EventsList page.
@@ -12,6 +13,12 @@ import { ViewController } from 'ionic-angular';
   templateUrl: 'events-list.html'
 })
 export class EventsListPage {
+
+  constructor(private viewCtrl: ViewController, private navCtrl: NavController) { }
+
+  launch(data) {
+    this.navCtrl.push(EventPage, data);
+  }
 
   events = [
       { 
@@ -36,11 +43,5 @@ export class EventsListPage {
         }
       }
     ];
-
-  constructor(private viewCtrl: ViewController) { }
-
-  launch(data) {
-    
-  }
 
 }
