@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {DateModel} from "./date-model";
+import {TimeModel} from "./time-model";
+import {LocationModel} from "./location-model";
 
 /*
   Generated class for the EventModel provider.
@@ -11,11 +14,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EventModel {
 
+  public id: number;
   public name: string;
-
-
-  export class date{
-
-  }
-
+  public image: string;
+  public date: DateModel;
+  public to: TimeModel;
+  public from: TimeModel;
+  public destination: LocationModel;
 }
