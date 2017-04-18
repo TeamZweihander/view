@@ -22,8 +22,10 @@
         {{event.title}}
       </ion-card-title>
       <p>
-        {{event.description}}
+        {{event.location.name}}
       </p>
+      <span item-left>{{event.date.day}} {{event.date.month}} {{event.date.year}}</span>
+      <span item-right>{{event.from.hour}}:{{event.from.minute}} - {{event.to.hour}}:{{event.to.minute}}</span>
     </ion-card-content>
   </ion-card>
 
