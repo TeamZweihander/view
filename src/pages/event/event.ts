@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { EventModel } from "../../providers/event-model";
+import { EventModel } from "../../models/event-model";
 import { HomePage } from '../home/home';
 
 /*

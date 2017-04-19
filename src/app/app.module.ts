@@ -10,6 +10,7 @@ import { SearchPage } from '../pages/search/search';
 import { EventPage } from '../pages/event/event';
 import { EventsListPage } from '../pages/events-list/events-list';
 import { AuthService } from '../providers/auth-service';
+import { EventService } from '../providers/event-service';
 import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
@@ -46,6 +47,6 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     EventPage,
     SearchPage
   ],
-  providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, EventService, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
