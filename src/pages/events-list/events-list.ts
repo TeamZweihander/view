@@ -43,6 +43,7 @@ export class EventsListPage {
 
     event.destination = new LocationModel();
     event.destination.name = "LC de Villiers Stadium";
+    event.destination.distance = 420;
 
     this.events.push(event);
   }

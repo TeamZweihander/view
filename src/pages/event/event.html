@@ -15,4 +15,33 @@
 
 <ion-content padding>
 
+<ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-9 style="margin-top: 15px">
+          <h2> {{event.destination.name}} </h2>
+          <p> {{event.destination.distance}} </p>
+        </ion-col>
+        <ion-col col-3>
+          <button (click)="startNavigating(event.destination)" ion-button>
+            <ion-icon name='navigate'></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <img src="data:image/png;base64,{{event.image}}">
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <h1>{{event.title}}</h1>
+    <h2>{{event.date.day}} {{event.date.month}} {{event.date.year}}</h2>
+    <p>{{event.from.hour}}:{{event.from.minute}} - {{event.to.hour}}:{{event.to.minute}}</p>
+  </ion-item>
+
+  <ion-card-content>
+    <p>{{event.description}}</p>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
