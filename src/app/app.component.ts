@@ -1,11 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {Nav, Platform} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+
+import { TabsPage } from '../pages/tabs/tabs';
 import {API} from "../util/API";
 import {LoginPage} from "../pages/login/login";
 import {RegisterPage} from "../pages/register/register";
 import {HomePage} from "../pages/home/home";
-import {ProfilePage} from '../pages/profile/profile';
+import {EventsListPage} from "../pages/events-list/events-list";
 
 @Component({
   templateUrl: 'app.html',
@@ -30,16 +32,14 @@ export class MyApp {
     });
     this.pages = [
       { title: 'Login', component: LoginPage },
-      { title: 'Register', component: RegisterPage }];
+      { title: 'Register', component: RegisterPage },
+      { title: 'Events', component:  EventsListPage }];
   }
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-  }
-
-  openProfilePage(user: string) {
-    this.nav.push(ProfilePage);
+    //this.nav.setRoot(page.component);
+    this.nav.push(page.component); //Use this so that back buttons will work
   }
 }

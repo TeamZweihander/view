@@ -7,13 +7,15 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
+import { EventPage } from '../pages/event/event';
+import { EventsListPage } from '../pages/events-list/events-list';
 import { AuthService } from '../providers/auth-service';
+import { EventService } from '../providers/event-service';
+import { NavService } from '../providers/nav-service';
 import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SanitizeHtml} from "../util/sanitizeHTML";
-import {ProfilePage} from '../pages/profile/profile'
-
 
 
 @NgModule({
@@ -26,8 +28,9 @@ import {ProfilePage} from '../pages/profile/profile'
     LoginPage,
     RegisterPage,
     SearchPage,
-    SanitizeHtml,
-    ProfilePage
+    EventsListPage,
+    EventPage,
+    SanitizeHtml
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -41,9 +44,10 @@ import {ProfilePage} from '../pages/profile/profile'
     TabsPage,
     LoginPage,
     RegisterPage,
-    SearchPage,
-    ProfilePage
+    EventsListPage,
+    EventPage,
+    SearchPage
   ],
-  providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, EventService, AuthService, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
