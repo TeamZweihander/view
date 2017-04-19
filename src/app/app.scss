@@ -15,6 +15,9 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+$color: rgb(195, 0, 0);
+$color-checked: rgb(0, 0, 195);
+
 .user {
   background-image: url('../assets/images/user_background.jpeg');
   height: 150px;
