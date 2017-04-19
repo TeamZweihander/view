@@ -30,7 +30,7 @@ export class SearchPage {
   }
 
   ngAfterViewInit() {
-    this.initFilterList();
+    //this.initFilterList();
   }
 
   initFilterList() {
