@@ -12,6 +12,8 @@ import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SanitizeHtml} from "../util/sanitizeHTML";
+import {ProfilePage} from '../pages/profile/profile'
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     LoginPage,
     RegisterPage,
     SearchPage,
-    SanitizeHtml
+    SanitizeHtml,
+    ProfilePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +41,8 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     TabsPage,
     LoginPage,
     RegisterPage,
-    SearchPage
+    SearchPage,
+    ProfilePage
   ],
   providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

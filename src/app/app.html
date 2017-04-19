@@ -7,10 +7,12 @@
   <ion-content>
 
     <ion-grid>
-      <ion-row class="user">
-        <ion-col col-12><img src="{{ avatar}}" class="user_avatar"/></ion-col>
-        <span class="user_name">{{ name }}</span>
-      </ion-row>
+      <button (click)="openProfilePage()">
+        <ion-row class="user">
+          <ion-col col-12><img src="{{ avatar}}" class="user_avatar"/></ion-col>
+          <span class="user_name">{{ name }}</span>
+        </ion-row>
+      </button>
     </ion-grid>
 
     <ion-list>
