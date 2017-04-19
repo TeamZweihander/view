@@ -12,16 +12,7 @@ export class SearchPage {
   items = [];
   baseClassFilterButton = "icon-circle-filled";
   
-  filters = [
-      { value: "Cart", icon: "cart", id : "1"}, 
-      { value: "Paw", icon: "paw", id : "2" }, 
-      { value: "Cart", icon: "cart", id : "3" }, 
-      { value: "Paw", icon: "paw", id : "4" }, 
-      { value: "Cart", icon: "cart", id : "5" }, 
-      { value: "Paw", icon: "paw", id : "6" }, 
-      { value: "Cart", icon: "cart", id : "7" }, 
-      { value: "Paw", icon: "paw", id : "8" }
-    ];
+  filters = [];
 
   constructor(private viewCtrl: ViewController) { }
 

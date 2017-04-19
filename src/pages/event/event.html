@@ -20,7 +20,7 @@
       <ion-row>
         <ion-col col-9 style="margin-top: 15px">
           <h2> {{event.destination.name}} </h2>
-          <p> {{event.destination.distance}} </p>
+          <p> {{event.destination.distance}} m</p>
         </ion-col>
         <ion-col col-3>
           <button (click)="startNavigating(event.destination)" ion-button>
@@ -34,11 +34,10 @@
 
 <ion-card>
   <ion-item>
-    <h1>{{event.title}}</h1>
-    <h2>{{event.date.day}} {{event.date.month}} {{event.date.year}}</h2>
+    <p>{{event.title}}</p>
+    <p>{{event.date.day}} {{event.date.month}} {{event.date.year}}</p>
     <p>{{event.from.hour}}:{{event.from.minute}} - {{event.to.hour}}:{{event.to.minute}}</p>
   </ion-item>
-
   <ion-card-content>
     <p>{{event.description}}</p>
   </ion-card-content>
