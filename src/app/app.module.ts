@@ -7,8 +7,6 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
-import { EventPage } from '../pages/event/event';
-import { EventsListPage } from '../pages/events-list/events-list';
 import { AuthService } from '../providers/auth-service';
 import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
@@ -26,8 +24,6 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     LoginPage,
     RegisterPage,
     SearchPage,
-    EventsListPage,
-    EventPage,
     SanitizeHtml
   ],
   imports: [
@@ -42,8 +38,6 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     TabsPage,
     LoginPage,
     RegisterPage,
-    EventsListPage,
-    EventPage,
     SearchPage
   ],
   providers: [StatusBar, SplashScreen, AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
