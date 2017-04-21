@@ -5,9 +5,20 @@
 
   <div class="register-box">
     <form (ngSubmit)="register()" #registerForm="ngForm">
+       <ion-row>
+        <ion-col>
+
+        </ion-col>
+       </ion-row>
+       
       <ion-row>
         <ion-col>
           <ion-list inset>
+            <ion-item>
+              <ion-label floating>Username</ion-label>
+			            <ion-input type="text" name="username" [(ngModel)]="registerCredentials.username"></ion-input>
+            </ion-item>
+
             <ion-item>
               <ion-label floating>Email</ion-label>
 			        <ion-input type="email"  name="email" [(ngModel)]="registerCredentials
@@ -17,6 +28,11 @@
             <ion-item>
               <ion-label floating>Password</ion-label>
 			            <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating="">Remember Me</ion-label>
+			        <ion-input type="checkbox" name="rememberMe" [(ngModel)]="registerCredentials.remember"></ion-input>
             </ion-item>
           </ion-list>
         </ion-col>

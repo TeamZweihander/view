@@ -53,10 +53,9 @@ export class AuthService {
   }
 
   public logout() {
+  	this.currentUser = null;
 
-	//Destroy login
     return Observable.create(observer => {
-      this.currentUser = null;
       observer.next(true);
       observer.complete();
     });
@@ -68,5 +67,12 @@ export class AuthService {
 			return Observable.throw(error.statusText || 'Server error');
 	}
 
+	public loadPersistedUser() {
+			
+	}
+
+	private persistedUser() {
+			
+	}
 
 }

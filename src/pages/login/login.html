@@ -17,6 +17,12 @@
               <ion-label floating="">Password</ion-label>
 			        <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password"></ion-input>
             </ion-item>
+     
+            <ion-item>
+              <ion-label floating="">Remember Me</ion-label>
+			        <ion-input type="checkbox" name="rememberMe" [(ngModel)]="registerCredentials.remember"></ion-input>
+            </ion-item>
+
           </ion-list>
         </ion-col>
       </ion-row>
