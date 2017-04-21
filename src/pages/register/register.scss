@@ -23,6 +23,16 @@ ion-app.md [padding], ion-app.md [padding] .scroll-content {
 
 page-register {
 
+    .avatar {
+        width:  100px;
+        height: 100px;
+        background-color: gray;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
   .register-content {
 	background: url('../assets/images/Arc-Architects-Our-Projects-UP-Study-Center-Cover.jpg') no-repeat center center fixed;
 	background-size: cover;

@@ -48,7 +48,10 @@ export class MyApp {
     if(this.authService.isAuthenticated())
     {
       this.currentUser = this.authService.getUser();
-      this.avatar = "data:image/png;base64," + this.currentUser.profileImage;
+      if(this.currentUser.profileImage != "")
+        this.avatar = "data:image/png;base64," + this.currentUser.profileImage;
+      else
+        this.avatar = "assets/images/user_avatar.svg";
       this.name = this.currentUser.name;
       this.email = this.currentUser.email;
       this.isLoggedIn = true;

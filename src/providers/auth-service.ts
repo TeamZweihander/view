@@ -12,6 +12,10 @@ export class AuthService {
 
   public login(credentials) {
 		this.currentUser = this.createUser();
+		if(credentials.remember)
+		{
+			this.persistUser();
+		}
 
 		if(this.currentUser){
 			return new Observable<boolean>(observer => {
@@ -26,7 +30,11 @@ export class AuthService {
   }
 
   public register(credentials) {
-		this.currentUser = this.createUser();
+		this.currentUser = new UserModel(2, credentials.name, credentials.email, "");
+		if(credentials.remember)
+		{
+			this.persistUser();
+		}
 
 		if(this.currentUser){
 			return new Observable<boolean>(observer => {
@@ -68,11 +76,12 @@ export class AuthService {
 	}
 
 	public loadPersistedUser() {
-			
+			//TODO must check local storage for user account
 	}
 
-	private persistedUser() {
-			
+	private persistUser() {
+			//TODO must save user account to local storage
+			alert("Persist");
 	}
 
 }
