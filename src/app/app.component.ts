@@ -8,6 +8,7 @@ import {RegisterPage} from "../pages/register/register";
 import {HomePage} from "../pages/home/home";
 import {EventsListPage} from "../pages/events-list/events-list";
 import { AuthService } from "../providers/auth-service";
+import {UserModel} from '../models/user-model';
 
 @Component({
   templateUrl: 'app.html',
@@ -23,7 +24,7 @@ export class MyApp {
   name = "";
   email = "";
   isLoggedIn = false;
-  currentUser: UserModel;
+  currentUser: UserModel = null;
 
   constructor(platform: Platform, authService: AuthService) {
     platform.ready().then(() => {
@@ -34,9 +35,10 @@ export class MyApp {
     });
     if(authService.isAuthenticated())
     {
-      this.avatar = "assets/images/user_avatar.svg";
-      this.name = "Guest";
-      this.email = "";
+      this.currentUser = authService.getUser();
+      this.avatar = this.currentUser.profileImage;
+      this.name = this.currentUser.name;
+      this.email = this.currentUser.email;
       this.isLoggedIn = true;
       this.pages = [
         { title: 'Events', component:  EventsListPage }];
