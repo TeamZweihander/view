@@ -1,15 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      <ion-icon ios="ios-menu" md="md-menu" menuToggle></ion-icon> <span padding-left="5px">Home</span>
-      <ion-icon (click)="presentModal()" name="search" class="pull-right"></ion-icon>
-    </ion-title>
+    <ion-title>NavUP</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only md="md-menu" menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
 
-    <!--<ion-buttons end>-->
-      <!--&lt;!&ndash;<button ion-button (click)="addMarker()"><ion-icon ios="ios-search" md="md-search"></ion-icon></button>&ndash;&gt;-->
-    <!--</ion-buttons>-->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentModal()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
