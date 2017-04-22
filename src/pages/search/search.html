@@ -4,9 +4,14 @@
 
     <div *ngIf="filters.length != 0" class="container">
       <ion-card id="filterList">
-          <button name="filterButton" ion-button icon-only (click)="selectFilter($event, filter)" *ngFor="let filter of filters">
-            <ion-icon name="{{filter.icon}}"></ion-icon>
-          </button>
+          <ion-row>
+            <ion-col *ngFor="let filter of filters">
+              <button name="filterButton" ion-button icon-only (click)="selectFilter($event, filter)">
+                <ion-icon name="{{filter.icon}}"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+          
       </ion-card>
     </div>
 
