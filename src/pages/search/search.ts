@@ -13,8 +13,8 @@ export class SearchPage {
   searchText = "";
   items = [];
   filters = [];
- 
-  constructor(private viewCtrl: ViewController, private navSrvc: NavService) 
+
+  constructor(private viewCtrl: ViewController, private navSrvc: NavService)
   {
     this.filters = navSrvc.getLocationTypes();
   }
@@ -29,11 +29,11 @@ export class SearchPage {
   }
 
   initFilterList() {
-    var filterButtons = document.getElementsByName('filterButton');
-    for(var i = 0; i < filterButtons.length; i++)
+    let filterButtons = document.getElementsByName('filterButton');
+    for(let i = 0; i < filterButtons.length; i++)
       filterButtons.item(i).classList.add(this.baseClassFilterButton);
 
-    var filterList = document.getElementById('filterList');
+    let filterList = document.getElementById('filterList');
     if((this.filters.length * 60) > document.getElementById('filterList').clientWidth - (document.getElementById('filterList').offsetLeft * 2))
       filterList.style.width = this.filters.length * 60 + "px";
   }
@@ -43,8 +43,8 @@ export class SearchPage {
     {
       this.filterOptionId = filter.id;
 
-      var filterButtons = document.getElementsByName('filterButton');
-      for(var i = 0; i < filterButtons.length; i++)
+      let filterButtons = document.getElementsByName('filterButton');
+      for(let i = 0; i < filterButtons.length; i++)
         filterButtons.item(i).classList.remove("icon-circle-checked");
       event.target.classList.add("icon-circle-checked");
     }
@@ -56,7 +56,7 @@ export class SearchPage {
     this.items = this.navSrvc.getLocations(this.searchText, this.filterOptionId);
   }
 
- 
+
 
   getItems(ev) {
     this.searchText = ev.target.value;
