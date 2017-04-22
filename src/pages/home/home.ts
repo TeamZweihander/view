@@ -29,6 +29,7 @@ export class HomePage {
       if (this.params.get('distance')) {
         this.distanceValue = this.params.get('distance');
         this.steps = Math.round(this.distanceValue * 1.3);
+        this.canNavigate = true;
       }
       if (this.params.get('name'))
       {
@@ -69,6 +70,7 @@ export class HomePage {
 
     }, (err) => {
       console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
+      alert("Cannot find your current position, please make sure of your internet connectivity");
     });
   }
 
@@ -120,12 +122,28 @@ export class HomePage {
   navigate() {
     if (this.navigateText == "Cancel")
     {
-      this.distanceValue = 0.0;
-      this.destination = "";
-      this.steps = 0;
-      this.canNavigate = false;
-      this.navigateText = "Navigate";
-      this.navigateIcon = "send";
+      this.alertCtrl.create({
+        title: 'Are you sure ?',
+        message: 'Are you sure you wish to cancel navigation to <b>'+this.destination+'</b>.',
+        buttons: [
+          {
+            text: "No",
+            role: 'cancel'
+          },
+          {
+            text: 'Yes',
+            role: 'success',
+            handler: () => {
+              this.distanceValue = 0.0;
+              this.destination = "";
+              this.steps = 0;
+              this.canNavigate = false;
+              this.navigateText = "Navigate";
+              this.navigateIcon = "send";
+            }
+          }
+        ]
+      }).present();
       return;
     }
 
@@ -137,14 +155,13 @@ export class HomePage {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+
           }
         },
         {
           text: 'Start',
           role: 'success',
           handler: () => {
-            console.log('Got to Navigation page');
             this.navigateText = "Cancel";
             this.navigateIcon = "close";
           }
