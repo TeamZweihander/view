@@ -18,10 +18,6 @@
 $color: rgb(43, 120, 228);
 $color-checked: rgb(19, 75, 151);
 
-ion-content {
-  background-color: lightslategrey;
-}
-
 .user {
   background-image: url('../assets/images/user_background.jpeg');
   height: 150px;
@@ -38,7 +34,7 @@ ion-content {
 }
 
 .user_name {
-  font-size: 150%;
+  font-size: 130%;
   color: white;
   padding-left: 10px;
 }

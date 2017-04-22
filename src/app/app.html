@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" (ionDrag)="loadData()" (ionOpen)="loadData()" (ionClose)="loadData()">
   <ion-header>
     <ion-toolbar>
       <ion-title>NavUP</ion-title>
@@ -7,18 +7,19 @@
   <ion-content>
 
     <ion-grid>
-      <button (click)="openProfilePage()">
-        <ion-row class="user">
+      <ion-row class="user">
           <ion-col col-12><img src="{{ avatar}}" class="user_avatar"/></ion-col>
           <span class="user_name">{{ name }}</span>
         </ion-row>
-      </button>
     </ion-grid>
 
     <ion-list>
 
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
+      </button>
+      <button menuClose *ngIf="isLoggedIn" menuClose ion-item (click)="logout()">
+        Logout
       </button>
 
     </ion-list>
