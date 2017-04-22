@@ -26,25 +26,41 @@ export class RegisterPage {
           text: 'Ok',
           handler: () => {
             this.takePhoto();
+             this.auth.register(this.registerCredentials).subscribe(allowed => {
+                if (allowed) {
+                  setTimeout(() => {
+                  this.loading.dismiss();
+                  this.nav.setRoot(HomePage)
+                  });
+                } else {
+                  this.showError("Access Denied");
+                }
+              },
+              error => {
+                this.showError(error);
+              });
           }
-        }, 'Cancel']
+        }, {
+          text: 'Cancel',
+          handler: () => {
+             this.auth.register(this.registerCredentials).subscribe(allowed => {
+                if (allowed) {
+                  setTimeout(() => {
+                  this.loading.dismiss();
+                  this.nav.setRoot(HomePage)
+                  });
+                } else {
+                  this.showError("Access Denied");
+                }
+              },
+              error => {
+                this.showError(error);
+              });
+          }
+        }]
       });
       alert.present();
     }
-
-    this.auth.register(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {
-        setTimeout(() => {
-        this.loading.dismiss();
-        this.nav.setRoot(HomePage)
-        });
-      } else {
-        this.showError("Access Denied");
-      }
-    },
-    error => {
-      this.showError(error);
-    });
   }
 
   showLoading() {
@@ -70,8 +86,8 @@ export class RegisterPage {
   takePhoto(){
     Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
-        targetWidth: 1000,
-        targetHeight: 1000,
+        targetWidth: 300,
+        targetHeight: 300,
         cameraDirection:1
     }).then((imageData) => {
         this.base64Image = "data:image/jpeg;base64," + imageData;
