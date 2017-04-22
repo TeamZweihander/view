@@ -39,6 +39,7 @@ export class SearchPage {
   }
 
   selectFilter(event, filter) {
+    alert("Filter selected");
     if(!event.target.classList.contains("icon-circle-checked"))
     {
       this.filterOptionId = filter.id;
