@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {NavController, AlertController, ModalController} from 'ionic-angular';
+import {NavController, AlertController, ModalController, NavParams} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import {SearchPage} from "../search/search";
 
@@ -18,10 +18,32 @@ export class HomePage {
 
   distanceValue: any = 0.0;
   steps: any = 0;
-  destination: string = "";
+  destination: string = "ME";
   canNavigate: boolean = false;
+  lat: number;
+  lon: number;
 
-  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams) {
+    if (this.params){
+      if (this.params.get('distance')) {
+        this.distanceValue = this.params.get('distance');
+        this.steps = this.distanceValue * 1.3;
+      }
+      if (this.params.get('name'))
+      {
+        this.destination = this.params.get('name');
+      }
+      if (this.params.get('lat'))
+      {
+        this.lat = this.params.get('lat');
+      }
+      if (this.params.get('lon'))
+      {
+        this.lon = this.params.get('lon');
+        this.addMarker(this.destination,new google.maps.LatLng(this.lat, this.lon));
+      }
+
+    }
   }
 
   ionViewDidLoad(){
@@ -42,23 +64,23 @@ export class HomePage {
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      this.addMarker("ME");
+      this.addMarker("ME", this.map.getCenter());
 
     }, (err) => {
       console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
     });
   }
 
-  addMarker(status){
+  addMarker(status, pos) {
 
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter(),
+      position: pos,
       icon: status == "ME" ? '/assets/images/icon-man.png' : ''
     });
 
-    let content = "<h4>Information!</h4>";
+    let content = "<h4>"+this.destination+"</h4>";
 
     this.addInfoWindow(marker, content);
 
@@ -129,6 +151,10 @@ export class HomePage {
       if (data.name != null) {
         this.destination = data.name;
         this.canNavigate = true;
+        this.distanceValue = data.distance;
+        this.steps = data.distance * 1.3;
+
+        this.addMarker(this.destination,new google.maps.LatLng(this.lat, this.lon));
       }
     });
     modal.present();
