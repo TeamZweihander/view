@@ -50,8 +50,8 @@ describe('Component: Root Component', () => {
 
     });
 
-    /*it('initialises with a root page of Tabs page', () => {
+    it('initialises with a root page of Tabs page', () => {
         expect(comp['rootPage']).toBe(HomePage);
-    });*/
+    });
 
 });
