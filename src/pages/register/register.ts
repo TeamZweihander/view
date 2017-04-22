@@ -17,6 +17,21 @@ export class RegisterPage {
 
   public register() {
     this.showLoading();
+    if(this.registerCredentials.profileImage == '')
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Profile Picture',
+        subTitle: 'Would you like to upload a picture of yourself?',
+        buttons: [ {
+          text: 'Ok',
+          handler: () => {
+            this.takePhoto();
+          }
+        }, 'Cancel']
+      });
+      alert.present();
+    }
+
     this.auth.register(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         setTimeout(() => {
