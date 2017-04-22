@@ -10,8 +10,8 @@ import {Camera} from 'ionic-native';
 })
 export class RegisterPage {
  loading: Loading;
-  registerCredentials = {username: '', email: '', password: '', remember: 0};
-  public base64Image: string;
+  registerCredentials = {username: '', email: '', password: '', remember: 0, profileImage: ''};
+  public base64Image: string = "assets/images/user_avatar.svg";
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
 
@@ -56,12 +56,13 @@ export class RegisterPage {
     Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
         targetWidth: 1000,
-        targetHeight: 1000
+        targetHeight: 1000,
+        cameraDirection:1
     }).then((imageData) => {
-      // imageData is a base64 encoded string
         this.base64Image = "data:image/jpeg;base64," + imageData;
+        this.registerCredentials.profileImage = imageData;
     }, (err) => {
-        console.log(err);
+        alert(err);
     });
   }
 }
