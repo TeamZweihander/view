@@ -6,7 +6,7 @@ import {MyApp} from "./app.component";
 import {IonicModule} from "ionic-angular";
 import {} from "@types/jasmine"
 import {HomePage} from "../pages/home/home";
-import { AuthService } from "../providers/auth-service";
+import {AuthService} from "../providers/auth-service";
 
 let comp: MyApp;
 let fixture: ComponentFixture<MyApp>;
@@ -20,7 +20,7 @@ describe('Component: Root Component', () => {
             declarations: [MyApp],
 
             providers: [
-
+              AuthService
             ],
 
             imports: [
@@ -50,7 +50,7 @@ describe('Component: Root Component', () => {
 
     });
 
-    it('initialises with a root page of Tabs page', () => {
+    it('initialises with a root page of Home page', () => {
         expect(comp['rootPage']).toBe(HomePage);
     });
 
