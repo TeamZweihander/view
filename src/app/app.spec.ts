@@ -4,7 +4,6 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import {MyApp} from "./app.component";
 import {IonicModule} from "ionic-angular";
-import {TabsPage} from "../pages/tabs/tabs";
 import {} from "@types/jasmine"
 import {HomePage} from "../pages/home/home";
 
