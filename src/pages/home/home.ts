@@ -12,13 +12,14 @@ declare var google;
 export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
-
   map: any;
   searchQuery: string = '';
 
   distanceValue: any = 0.0;
   steps: any = 0;
   destination: string = "ME";
+  navigateText: string = "Navigate";
+  navigateIcon: string = "send";
   canNavigate: boolean = false;
   lat: number;
   lon: number;
@@ -27,7 +28,7 @@ export class HomePage {
     if (this.params){
       if (this.params.get('distance')) {
         this.distanceValue = this.params.get('distance');
-        this.steps = this.distanceValue * 1.3;
+        this.steps = Math.round(this.distanceValue * 1.3);
       }
       if (this.params.get('name'))
       {
@@ -117,6 +118,17 @@ export class HomePage {
   }
 
   navigate() {
+    if (this.navigateText == "Cancel")
+    {
+      this.distanceValue = 0.0;
+      this.destination = "";
+      this.steps = 0;
+      this.canNavigate = false;
+      this.navigateText = "Navigate";
+      this.navigateIcon = "send";
+      return;
+    }
+
     let alert = this.alertCtrl.create({
       title: 'Are you sure ?',
       message: 'This is the destination you have selected <br/><i text-center><b>'+this.destination+'</b></i>',
@@ -133,6 +145,8 @@ export class HomePage {
           role: 'success',
           handler: () => {
             console.log('Got to Navigation page');
+            this.navigateText = "Cancel";
+            this.navigateIcon = "close";
           }
         }
       ]
@@ -147,12 +161,12 @@ export class HomePage {
   presentModal() {
     let modal = this.modalCtrl.create(SearchPage);
     modal.onDidDismiss(data => {
-      alert(JSON.stringify(data));
+
       if (data.name != null) {
         this.destination = data.name;
         this.canNavigate = true;
         this.distanceValue = data.distance;
-        this.steps = data.distance * 1.3;
+        this.steps = Math.round(data.distance * 1.3);
 
         this.addMarker(this.destination,new google.maps.LatLng(this.lat, this.lon));
       }
