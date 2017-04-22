@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   public register(credentials) {
-		this.currentUser = new UserModel(2, credentials.username, credentials.email, "");
+		this.currentUser = new UserModel(2, credentials.username, credentials.email, credentials.profileImage);
 		if(credentials.remember)
 		{
 			this.persistUser();

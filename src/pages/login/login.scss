@@ -29,7 +29,7 @@ page-login {
 
 	ion-navbar{
 		background-color: white;
-    padding: 10px;
+        padding: 10px;
 	}
 
 	ion-input {
@@ -45,7 +45,7 @@ page-login {
 
 	.scroll-content {
 		margin: 0px !important;
-		overflow-y: hidden;
+		overflow-y: scroll;
 	}
   }
 

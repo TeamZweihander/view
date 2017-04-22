@@ -6,7 +6,7 @@
   <div class="register-box">
     <form (ngSubmit)="register()" #registerForm="ngForm">
        <ion-row>
-        <ion-col><img src="assets/images/user_avatar.svg" class="avatar"/></ion-col>
+        <ion-col><img (click)='takePhoto()' src="{{base64Image}}" class="avatar"/></ion-col>
        </ion-row>
        
       <ion-row>

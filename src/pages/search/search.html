@@ -2,6 +2,19 @@
   <ion-navbar>
     <ion-searchbar (ionInput)="getItems($event)" (ionCancel)="dismiss($event)" [showCancelButton]="true" ></ion-searchbar>
 
+    <div *ngIf="filters.length != 0" class="container">
+      <ion-card id="filterList">
+          <ion-row>
+            <ion-col *ngFor="let filter of filters">
+              <button name="filterButton" ion-button icon-only (click)="selectFilter($event, filter)">
+                <ion-icon name="{{filter.icon}}"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+          
+      </ion-card>
+    </div>
+
     <ion-card *ngIf="items.length != 0">
       <ion-list>
         <ion-item ion-item (click)="dismiss(item)" *ngFor="let item of items">
@@ -15,14 +28,5 @@
     </ion-card>
 
     <!--<strong *ngIf="items.length == 0">No locations found ¯\\_(ツ)_/¯</strong>-->
-
-    <div *ngIf="filters.length != 0" class="container">
-      <ion-card id="filterList">
-        <button name="filterButton" (click)="selectFilter($event, filter)" ion-button *ngFor="let filter of filters">
-          <ion-icon name="{{filter.icon}}" item-left></ion-icon>
-        </button>
-      </ion-card>
-    </div>
-
   </ion-navbar>
 </ion-header>
