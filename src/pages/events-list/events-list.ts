@@ -6,6 +6,8 @@ import { DateModel } from "../../models/date-model";
 import { TimeModel } from "../../models/time-model";
 import { LocationModel } from "../../models/location-model";
 import { EventService } from "../../providers/event-service";
+import {LocalNotifications} from "ionic-native";
+
 
 /*
   Generated class for the EventsList page.
@@ -19,9 +21,14 @@ import { EventService } from "../../providers/event-service";
 })
 export class EventsListPage {
 
-  constructor(private viewCtrl: ViewController, private navCtrl: NavController, private eventSrvc: EventService) 
-  { 
+  constructor(private viewCtrl: ViewController, private navCtrl: NavController, private eventSrvc: EventService)
+  {
     this.events = eventSrvc.getEvents();
+    LocalNotifications.schedule({
+      id: 1,
+      title: 'Event Nearby',
+      text: 'I.T 2-27 [Standard Bank]',
+    });
   }
 
   launch(data) {
