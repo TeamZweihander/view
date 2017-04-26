@@ -14,7 +14,7 @@ export class LoginPage {
   registerCredentials = {email: '', password: '', remember: 0};
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
-    this.fingerprintLogin();
+
   }
 
   public createAccount() {
