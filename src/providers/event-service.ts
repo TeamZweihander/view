@@ -76,31 +76,31 @@ export class EventService {
     {
       id: 2,
       title: 'Event Nearby',
-      at: new Date(new Date().getTime() + 3600),
+      at: new Date(new Date().getTime() + 36000),
       text: 'HB 4-2 [Living Arts]',
     },
     {
       id: 2,
       title: 'Event Nearby',
-      at: new Date(new Date().getTime() + 1000),
+      at: new Date(new Date().getTime() + 5000),
       text: 'I.T 2-23 [Career fair]',
     },
     {
       id: 3,
       title: 'Event Nearby',
-      at: new Date(new Date().getTime() + 8600),
+      at: new Date(new Date().getTime() + 80600),
       text: 'I.T 4-22 [PHD Defence - Jhon Doe]',
     },
     {
       id: 4,
       title: 'Event Nearby',
-      at: new Date(new Date().getTime() + 11600),
+      at: new Date(new Date().getTime() + 10600),
       text: 'I.T 4-56 [Project Demo]',
     },
     {
       id: 5,
       title: 'Event Nearby',
-      at: new Date(new Date().getTime() + 7200),
+      at: new Date(new Date().getTime() + 40200),
       text: 'CSC [Student Card Registration]',
     }]
   }
