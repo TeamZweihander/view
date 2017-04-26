@@ -63,7 +63,8 @@
     "cordova-plugin-geolocation",
     "cordova-plugin-googlemaps",
     "cordova-plugin-camera",
-    "de.appplant.cordova.plugin.local-notification"
+    "de.appplant.cordova.plugin.local-notification",
+    "cordova-plugin-android-fingerprint-auth"
   ],
   "cordovaPlatforms": [],
   "description": "NavUP: An Ionic project"
