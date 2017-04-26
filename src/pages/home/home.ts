@@ -70,7 +70,12 @@ export class HomePage {
 
     }, (err) => {
       console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
-      alert("Cannot find your current position, please make sure of your internet connectivity");
+      // alert("Cannot find your current position, please make sure of your internet connectivity");
+      this.alertCtrl.create({
+        title: 'Internet Connection',
+        subTitle: "Cannot find your location, please make sure you have a valid internet connection",
+        buttons: ['OK']
+      }).present();
     });
   }
 
