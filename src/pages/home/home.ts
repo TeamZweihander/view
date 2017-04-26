@@ -85,7 +85,7 @@ export class HomePage {
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: pos,
-      icon: status == "ME" ? '/assets/images/icon-man.png' : ''
+      icon: status == "ME" ? 'assets/images/icon-man.png' : ''
     });
 
     let content = "<h4>"+this.destination+"</h4>";
