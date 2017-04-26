@@ -13,7 +13,9 @@ export class LoginPage {
   loading: Loading;
   registerCredentials = {email: '', password: '', remember: 0};
 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+    this.fingerprintLogin();
+  }
 
   public createAccount() {
     this.nav.push(RegisterPage);
@@ -45,8 +47,9 @@ export class LoginPage {
               if (result.withFingerprint) {
                 console.log("Successfully encrypted credentials.");
                 console.log("Encrypted credentials: " + result.token);
+                this.login();
               } else if (result.withBackup) {
-                console.log('Successfully authenticated with backup password!');
+                this.login();
               } else console.log('Didn\'t authenticate!');
             })
             .catch(error => {
@@ -69,7 +72,13 @@ export class LoginPage {
           }).present();
         }
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        this.alertCtrl.create({
+          title: 'Fingerprint Error',
+          subTitle: "Seems like you your phone does not support fingerprint access",
+          buttons: ['OK']
+        }).present();
+      });
   }
 
   showLoading() {
