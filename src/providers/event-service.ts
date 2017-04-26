@@ -5,11 +5,11 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EventService {
-	
+
 	constructor(public httpInterface: Http) {  }
- 
+
     getEvents() {
-        
+
         return [
             {
                 id: 1,
@@ -66,6 +66,43 @@ export class EventService {
         ];
 
     }
-  
+  getNotifications() {
+
+	  return [{
+      id: 1,
+      title: 'Event Nearby',
+      text: 'I.T 2-27 [Standard Bank]',
+    },
+    {
+      id: 2,
+      title: 'Event Nearby',
+      at: new Date(new Date().getTime() + 3600),
+      text: 'HB 4-2 [Living Arts]',
+    },
+    {
+      id: 2,
+      title: 'Event Nearby',
+      at: new Date(new Date().getTime() + 1000),
+      text: 'I.T 2-23 [Career fair]',
+    },
+    {
+      id: 3,
+      title: 'Event Nearby',
+      at: new Date(new Date().getTime() + 8600),
+      text: 'I.T 4-22 [PHD Defence - Jhon Doe]',
+    },
+    {
+      id: 4,
+      title: 'Event Nearby',
+      at: new Date(new Date().getTime() + 11600),
+      text: 'I.T 4-56 [Project Demo]',
+    },
+    {
+      id: 5,
+      title: 'Event Nearby',
+      at: new Date(new Date().getTime() + 7200),
+      text: 'CSC [Student Card Registration]',
+    }]
+  }
 
 }

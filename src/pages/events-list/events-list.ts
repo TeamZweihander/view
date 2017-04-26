@@ -24,11 +24,7 @@ export class EventsListPage {
   constructor(private viewCtrl: ViewController, private navCtrl: NavController, private eventSrvc: EventService)
   {
     this.events = eventSrvc.getEvents();
-    LocalNotifications.schedule({
-      id: 1,
-      title: 'Event Nearby',
-      text: 'I.T 2-27 [Standard Bank]',
-    });
+    LocalNotifications.schedule(eventSrvc.getNotifications());
   }
 
   launch(data) {
