@@ -11,6 +11,13 @@
       height: 100%;
     }
 
+    ion-card {
+      max-height: 200px;
+      overflow: scroll;
+      position: absolute;
+      z-index: 1;
+    }
+
     .button-inner {
       flex-flow: column;
     }
@@ -39,6 +46,9 @@
     }
     .pull-right {
       float: right;
+    }
+    .hidden {
+      display: none;
     }
   }
 }

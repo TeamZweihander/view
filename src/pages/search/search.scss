@@ -1,6 +1,6 @@
 page-search {
-    $color: rgb(43, 120, 228);
-    $color-checked: rgb(19, 75, 151);
+    $color: rgb(43, 120, 255);
+    $color-checked: rgb(19, 40, 151);
 
    .background {
        background-color: transparent;
@@ -22,14 +22,14 @@ page-search {
         display: block;
 
         width: 50px;
-        height: 50px; 
-        font-size: 18px; 
-        
+        height: 50px;
+        font-size: 18px;
+
         -moz-border-radius:50%;
         -webkit-border-radius:50%;
         border-radius: 50%;
 
-        text-align:center; 
+        text-align:center;
     }
 
     .icon-circle-filled {
@@ -45,14 +45,7 @@ page-search {
         color: $color;
     }
 
-    .icon-circle.icon-circle-checked {
+    .icon-circle-checked {
         background: $color-checked;
     }
-
-    .icon-circle-outline.icon-circle-checked {
-        border: 2px solid $color-checked;
-        background: transparent;
-        color: $color-checked;
-    }
-    
 }

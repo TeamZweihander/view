@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>NavUP</ion-title>
-    <ion-buttons start>
-      <button ion-button icon-only md="md-menu" menuToggle>
+    <ion-buttons left>
+      <button ion-button icon-only md="md-menu" menuToggle >
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
 
-    <ion-buttons end>
+    <ion-buttons right>
       <button ion-button icon-only (click)="presentModal()">
         <ion-icon name="search"></ion-icon>
       </button>
@@ -16,7 +16,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card [class.hidden]='!canNavigate'>
+    <ion-card-content>
+      <div #directionsPanel></div>
+    </ion-card-content>
+  </ion-card>
     <div #map id="map" style="height: 80%;" color="light"></div>
 
 </ion-content>
@@ -26,19 +30,19 @@
         <ion-col>
           <button ion-button color="light" (click)="distance()" >
             <ion-icon name="flag"></ion-icon>
-            <span id="distance">0.0 M</span>
+            <span id="distance">{{ distanceValue }} M</span>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button color="light" (click)="step()" >
             <ion-icon name="walk" ></ion-icon>
-            <span id="step">000 Steps</span>
+            <span id="step" >{{ steps }} Steps</span>
           </button>
         </ion-col>
         <ion-col>
           <button #nav id="nav" ion-button color="light" (click)="navigate()" [disabled]="!isNavigate()">
-            <ion-icon name="send"></ion-icon>
-            <span>Navigate</span>
+            <ion-icon name="{{ navigateIcon }}"></ion-icon>
+            <span >{{ navigateText }}</span>
           </button>
         </ion-col>
       </ion-row>

@@ -17,9 +17,9 @@
               <ion-label floating="">Password</ion-label>
 			        <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password"></ion-input>
             </ion-item>
-     
+
             <ion-item>
-              <label><input id="rememberme" name="rememberme" value="remember" type="checkbox" [(ngModel)]="registerCredentials.remember"/> &nbsp;Remember me</label>   
+              <label><input id="rememberme" name="rememberme" value="remember" type="checkbox" [(ngModel)]="registerCredentials.remember"/> &nbsp;Remember me</label>
             </ion-item>
 
           </ion-list>
@@ -32,7 +32,9 @@
           <button ion-button class="register-btn" type="button" block clear (click)="createAccount()">Create New Account</button>
         </ion-col>
       </ion-row>
-
+      <ion-row (click)="fingerprintLogin()" text-center>
+        <ion-icon text-center class="large" name="finger-print"></ion-icon>
+      </ion-row>
     </form>
   </div>
 </ion-content>
