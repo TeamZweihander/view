@@ -16,7 +16,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card [class.hidden]='!canNavigate'>
+    <ion-card-content>
+      <div #directionsPanel></div>
+    </ion-card-content>
+  </ion-card>
     <div #map id="map" style="height: 80%;" color="light"></div>
 
 </ion-content>
