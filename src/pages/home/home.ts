@@ -1,7 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {NavController, AlertController, ModalController, NavParams} from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import {File, Geolocation, Hotspot, NativeStorage} from 'ionic-native';
 import {SearchPage} from "../search/search";
+import {API} from "../../util/API";
+import {Device} from "ionic-native";
+
 
 declare var google;
 
@@ -13,6 +16,7 @@ export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
+
   map: any;
   searchQuery: string = '';
 
@@ -25,14 +29,27 @@ export class HomePage {
   lat: number;
   lon: number;
   currentPosition: any;
+  mapType: any = google.maps.MapTypeId.ROADMAP;
 
-  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams) {
+
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API) {
+
+    // alert(Device.model);
+    Hotspot.getNetConfig().then((res) => {
+      console.log(res);
+      // alert(res.deviceMacAddress);
+
+      return res.deviceMacAddress;
+    }).catch((err) => {
+      alert(err.toString());
+      return err;
+    });
+
     if (this.params){
       if (this.params.get('distance')) {
         this.distanceValue = this.params.get('distance');
         this.steps = Math.round(this.distanceValue * 1.3);
         this.canNavigate = true;
-
       }
       if (this.params.get('name'))
       {
@@ -45,13 +62,28 @@ export class HomePage {
       if (this.params.get('lon'))
       {
         this.lon = this.params.get('lon');
-        this.addMarker(this.destination,new google.maps.LatLng(this.lat, this.lon));
+        this.addMarker("", new google.maps.LatLng(this.lat, this.lon),this.destination);
         setTimeout(()=>{
           this.startNavigating(true);
         }, 2000);
 
       }
 
+      NativeStorage.getItem('settings')
+        .then(
+          data => {
+            if (data.maps == 'road')
+              this.mapType = google.maps.MapTypeId.ROADMAP;
+            else this.mapType = google.maps.MapTypeId.SATELLITE;
+          },
+          error => {
+            NativeStorage.setItem('settings', {maps: 'road' }).then(
+              () => {google.maps.MapTypeId.ROADMAP},
+              error => {
+                console.log(error);}
+            );
+          }
+        );
     }
   }
 
@@ -65,11 +97,11 @@ export class HomePage {
     Geolocation.getCurrentPosition(options).then((position) => {
       console.log("fun");
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      this.currentPosition = latLng;
+
       let mapOptions = {
         center: latLng,
         zoom: 50,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: this.mapType,
         controls: {
           'compass': true,
           'myLocationButton': true,
@@ -79,7 +111,7 @@ export class HomePage {
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      this.addMarker("ME", this.map.getCenter());
+      this.addMarker("ME", this.map.getCenter(), this.destination);
 
     }, (err) => {
       console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
@@ -92,7 +124,7 @@ export class HomePage {
     });
   }
 
-  addMarker(status, pos) {
+  addMarker(status, pos, name) {
 
     let marker = new google.maps.Marker({
       map: this.map,
@@ -101,7 +133,7 @@ export class HomePage {
       icon: status == "ME" ? 'assets/images/icon-man.png' : ''
     });
 
-    let content = "<h4>"+this.destination+"</h4>";
+    let content = "<h4>"+name+"</h4>";
 
     this.addInfoWindow(marker, content);
 
@@ -122,7 +154,7 @@ export class HomePage {
   distance() {
     let alert = this.alertCtrl.create({
       title: 'Distance',
-      subTitle: 'Number of Meters to your destination. <br/> <span text-center><b>'+this.distanceValue+'</b></span> Meters',
+      subTitle: 'Number of Meters to your destination. <br/> <b>'+this.distanceValue+'</b> Meters',
       buttons: ['Dismiss']
     });
     alert.present();
@@ -131,7 +163,7 @@ export class HomePage {
   step() {
     let alert = this.alertCtrl.create({
       title: 'Step',
-      subTitle: 'The estimated number of steps to get your to your destination. <br/> <span text-center><b>'+this.steps+'</b></span> Steps',
+      subTitle: 'The estimated number of steps to get your to your destination. <br/> <b>'+this.steps+'</b> Steps',
       buttons: ['Dismiss']
     });
     alert.present();
@@ -168,7 +200,7 @@ export class HomePage {
 
     let alert = this.alertCtrl.create({
       title: 'Are you sure ?',
-      message: 'This is the destination you have selected <br/><i text-center><b>'+this.destination+'</b></i>',
+      message: 'This is the destination you have selected <br/><b>'+this.destination+'</b>',
       buttons: [
         {
           text: 'Cancel',
@@ -206,7 +238,7 @@ export class HomePage {
         this.steps = Math.round(data.distance * 1.3);
         this.startNavigating(true);
 
-        this.addMarker(this.destination,new google.maps.LatLng(this.lat, this.lon));
+        this.addMarker("",new google.maps.LatLng(this.lat, this.lon), this.destination);
       }
     });
     modal.present();
@@ -237,6 +269,32 @@ export class HomePage {
       }
 
     });
-
+  }
+  saveLocation () {
+    this.alertCtrl.create({
+      title: 'Save Location',
+      message: "Enter name of place",
+      inputs: [
+        {
+          name: 'title',
+          placeholder: 'Name of building or place'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log(data);
+            this.addMarker("", this.map.getCenter(), data.title);
+          }
+        }
+      ]
+    }).present();
   }
 }

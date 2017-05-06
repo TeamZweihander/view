@@ -14,12 +14,20 @@
     </ion-grid>
 
     <ion-list>
-
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+      <button menuClose ion-item *ngIf="!isLoggedIn" (click)="login()">
+        <ion-icon name="log-in"></ion-icon> Login
       </button>
+
+      <button menuClose ion-item *ngIf="isLoggedIn" (click)="events()">
+        <ion-icon name="calendar"></ion-icon> Events
+      </button>
+
+      <button menuClose ion-item (click)="settings()">
+        <ion-icon name="settings"></ion-icon> Settings
+      </button>
+
       <button menuClose *ngIf="isLoggedIn" menuClose ion-item (click)="logout()">
-        Logout
+        <ion-icon name="log-out"></ion-icon> Logout
       </button>
 
     </ion-list>
