@@ -75,14 +75,8 @@ export class HomePage {
             if (data.maps == 'road')
               this.mapType = google.maps.MapTypeId.ROADMAP;
             else this.mapType = google.maps.MapTypeId.SATELLITE;
-          },
-          error => {
-            NativeStorage.setItem('settings', {maps: 'road' }).then(
-              () => {google.maps.MapTypeId.ROADMAP},
-              error => {
-                console.log(error);}
-            );
-          }
+          }, (err) => {
+            console.log(err);}
         );
     }
   }

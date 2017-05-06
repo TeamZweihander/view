@@ -45,6 +45,6 @@ import {SettingsPage} from "../pages/settings/settings";
     SearchPage,
     SettingsPage
   ],
-  providers: [StatusBar, SplashScreen, Device, Hotspot, Platform, EventService, AuthService, API, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, Device, Hotspot, EventService, AuthService, API, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
