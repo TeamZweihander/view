@@ -10,8 +10,7 @@ import { AuthService } from "../providers/auth-service";
 import {UserModel} from '../models/user-model';
 
 @Component({
-  templateUrl: 'app.html',
-  providers: [API]
+  templateUrl: 'app.html'
 })
 
 export class MyApp {

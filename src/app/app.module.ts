@@ -13,6 +13,9 @@ import { RegisterPage } from '../pages/register/register';
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SanitizeHtml} from "../util/sanitizeHTML";
+import {API} from "../util/API";
+import {Device} from "ionic-native";
+import {Hotspot} from "ionic-native";
 
 
 @NgModule({
@@ -39,6 +42,6 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
     EventPage,
     SearchPage
   ],
-  providers: [StatusBar, SplashScreen, EventService, AuthService, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, Device, Hotspot, EventService, AuthService, API, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
