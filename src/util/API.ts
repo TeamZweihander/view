@@ -1,15 +1,19 @@
 /**
  * Created by Avinash on 2017-03-30.
  */
-import {Injectable} from '@angular/core';
 
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
+// import {Device} from "ionic-native";
+
+// import {Platform} from "ionic-angular";
+
+import { Hotspot } from 'ionic-native';
+
 let baseURL = "http://api.fixer.io/";
 
-@Injectable()
 export class API {
     http: Http;
 
@@ -21,6 +25,24 @@ export class API {
         return [[Http]];
     }
 
+    getMAC() {
+      Hotspot.getNetConfig().then((res) => {
+        console.log(res);
+        return res.deviceMacAddress;
+      }).catch((err) => {
+          return err;
+        });
+
+      // UniqueDeviceID.get().then((res) => {
+      //   return res;
+      // });
+      // (<any>window).plugins.MacAddress.getMacAddress(
+      //   function(macAddress) {
+      //     alert(macAddress);
+      //     return macAddress;
+      //   },function(fail) {alert(fail);}
+      // );
+    }
     get(url) {
         return this.http.get(baseURL + url)
             .map(res => res.json())
