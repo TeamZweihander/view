@@ -7,17 +7,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class NavService {
 	constructor(public httpInterface: Http) {  }
-  
+
     getLocationTypes() {
         return [
-            { value: "Cart", icon: "cart", id : "1"}, 
-            { value: "Paw", icon: "paw", id : "2" }, 
-            { value: "Cart", icon: "cart", id : "3" }, 
-            { value: "Paw", icon: "paw", id : "4" }, 
-            { value: "Cart", icon: "cart", id : "5" }, 
-            { value: "Paw", icon: "paw", id : "6" }, 
-            { value: "Cart", icon: "cart", id : "7" }, 
-            { value: "Paw", icon: "paw", id : "8" }
+            { value: "Cart", icon: "cart", id : "1"},
+            { value: "Paw", icon: "paw", id : "2" },
+            { value: "Car", icon: "car", id : "3" },
+            { value: "Sport", icon: "football", id : "4" },
+            { value: "Emergency", icon: "medkit", id : "5" },
+            { value: "Airport", icon: "plane", id : "6" },
+            { value: "Food", icon: "restaurant", id : "7" },
+            { value: "Bar", icon: "wine", id : "8" }
         ];
     }
 
@@ -39,12 +39,12 @@ export class NavService {
         this.initializeItems();
         this.items = this.items.filter((item) => {
         if(searchText && searchText.trim() != '')
-            if(filterId != 0) 
+            if(filterId != 0)
             return (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1 && item.type == filterId);
             else return (item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1);
         else return false;
         });
-        this.items = this.items.slice(0, 4); 
+        this.items = this.items.slice(0, 4);
         return this.items;
     }
 }
