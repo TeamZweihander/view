@@ -1,5 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import {IonicApp, IonicModule, IonicErrorHandler, Platform} from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -16,6 +16,7 @@ import {SanitizeHtml} from "../util/sanitizeHTML";
 import {API} from "../util/API";
 import {Device} from "ionic-native";
 import {Hotspot} from "ionic-native";
+import {SettingsPage} from "../pages/settings/settings";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {Hotspot} from "ionic-native";
     SearchPage,
     EventsListPage,
     EventPage,
-    SanitizeHtml
+    SanitizeHtml,
+    SettingsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -40,8 +42,9 @@ import {Hotspot} from "ionic-native";
     RegisterPage,
     EventsListPage,
     EventPage,
-    SearchPage
+    SearchPage,
+    SettingsPage
   ],
-  providers: [StatusBar, SplashScreen, Device, Hotspot, EventService, AuthService, API, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [StatusBar, SplashScreen, Device, Hotspot, Platform, EventService, AuthService, API, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
