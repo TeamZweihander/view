@@ -20,11 +20,13 @@
     "@angular/platform-browser": "2.4.8",
     "@angular/platform-browser-dynamic": "2.4.8",
     "@angular/platform-server": "2.4.8",
-    "@ionic-native/core": "3.1.0",
+    "@ionic-native/core": "3.6.0",
+    "@ionic-native/device": "^3.6.0",
     "@ionic-native/local-notifications": "^3.5.0",
-    "@ionic-native/splash-screen": "3.1.0",
-    "@ionic-native/status-bar": "3.1.0",
+    "@ionic-native/splash-screen": "3.6.0",
+    "@ionic-native/status-bar": "3.6.0",
     "@ionic/storage": "2.0.0",
+    "@ionic-native/native-storage": "3.6.1",
     "@types/jasmine": "",
     "@types/node": "",
     "angular-cli": "",
@@ -43,7 +45,7 @@
     "rxjs": "5.0.1",
     "sw-toolbox": "3.4.0",
     "ts-node": "",
-    "tslint": "^4.5.0",
+    "tslint": "^5.2.0",
     "tslint-eslint-rules": "",
     "zone.js": "0.7.2"
   },
@@ -64,7 +66,10 @@
     "cordova-plugin-googlemaps",
     "cordova-plugin-camera",
     "de.appplant.cordova.plugin.local-notification",
-    "cordova-plugin-android-fingerprint-auth"
+    "cordova-plugin-android-fingerprint-auth",
+    "cordova-plugin-device",
+    "cordova-plugin-hotspot",
+    "cordova-plugin-nativestorage"
   ],
   "cordovaPlatforms": [],
   "description": "NavUP: An Ionic project"
