@@ -8,6 +8,7 @@ import {HomePage} from "../pages/home/home";
 import {EventsListPage} from "../pages/events-list/events-list";
 import { AuthService } from "../providers/auth-service";
 import {UserModel} from '../models/user-model';
+import {SettingsPage} from "../pages/settings/settings";
 
 @Component({
   templateUrl: 'app.html'
@@ -17,7 +18,6 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   rootPage = HomePage;
-  pages: Array<{title: string, component: any}>;
   avatar = "";
   name = "";
   email = "";
@@ -36,13 +36,6 @@ export class MyApp {
     this.loadData() ;
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    //this.nav.setRoot(page.component);
-    this.nav.push(page.component); //Use this so that back buttons will work
-  }
-
   loadData() {
     if(this.authService.isAuthenticated())
     {
@@ -54,7 +47,7 @@ export class MyApp {
       this.name = this.currentUser.name;
       this.email = this.currentUser.email;
       this.isLoggedIn = true;
-      this.pages = [{ title: 'Events', component:  EventsListPage }];
+      // this.pages = [{ title: 'Events', component:  EventsListPage }];
     }
     else
     {
@@ -62,7 +55,7 @@ export class MyApp {
       this.name = "Guest";
       this.email = "";
       this.isLoggedIn = false;
-      this.pages = [{ title: 'Login', component: LoginPage }];
+      // this.pages = [{ title: 'Login', component: LoginPage }];
     }
   }
 
@@ -70,4 +63,14 @@ export class MyApp {
     this.authService.logout();
     this.loadData() ;
   }
+  settings() {
+    this.nav.push(SettingsPage);
+  }
+  events() {
+    this.nav.push(EventsListPage);
+  }
+  login() {
+    this.nav.push(LoginPage);
+  }
+
 }
