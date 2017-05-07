@@ -1,4 +1,4 @@
-<ion-header (focus)="verify()">
+<ion-header (focus)="verify()" (ionChange)="verify()">
   <ion-navbar>
     <ion-title>NavUP</ion-title>
     <ion-buttons left>
@@ -7,7 +7,7 @@
       </button>
     </ion-buttons>
 
-    <ion-buttons end *ngIf="isLoggedIn" >
+    <ion-buttons end *ngIf="isLoggedIn" (ionChange)="verify()">
       <button ion-button icon-only clear (click)="saveLocation()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -21,7 +21,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content (ionChange)="verify()">
   <ion-card [class.hidden]='!showDirections'>
     <ion-card-content>
       <div #directionsPanel></div>

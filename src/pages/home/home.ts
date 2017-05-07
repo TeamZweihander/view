@@ -1,5 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {NavController, AlertController, ModalController, NavParams, ToastController} from 'ionic-angular';
+import {
+  NavController, AlertController, ModalController, NavParams, ToastController,
+  LoadingController
+} from 'ionic-angular';
 import {File, Geolocation, Hotspot} from 'ionic-native';
 import {SearchPage} from "../search/search";
 import {API} from "../../util/API";
@@ -34,7 +37,7 @@ export class HomePage {
   isLoggedIn : boolean = false;
   showDirections: boolean = false;
 
-  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API, private authService: AuthService, private storage : Storage, public toastCtrl: ToastController){
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API, private authService: AuthService, private storage : Storage, public toastCtrl: ToastController, private loadingCtrl: LoadingController){
     this.isLoggedIn = this.authService.isAuthenticated();
     // alert(Device.model);
     Hotspot.getNetConfig().then((res) => {
@@ -59,7 +62,7 @@ export class HomePage {
     this.storage.ready().then(() => {
 
       this.storage.get('settings').then((data) => {
-        alert(data.maps);
+
         if (data.maps == 'road')
             this.mapType = google.maps.MapTypeId.ROADMAP;
         else this.mapType = google.maps.MapTypeId.SATELLITE;
@@ -92,15 +95,22 @@ export class HomePage {
         this.addMarker("", new google.maps.LatLng(this.lat, this.lon),this.destination);
         setTimeout(()=>{
           this.startNavigating(true);
-        }, 2000);
+        }, 6000);
 
       }
     }
   }
 
   ionViewDidLoad(){
+    let load = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    load.present();
 
-    this.loadMap();
+    setTimeout(()=> {
+      this.loadMap();
+      load.dismissAll();
+    }, 4000);
   }
 
   loadMap(){
@@ -124,6 +134,7 @@ export class HomePage {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.addMarker("ME", this.map.getCenter(), this.destination);
+      this.currentPosition = this.map.getCenter();
 
     }, (err) => {
       console.log("err:" + err.toString()+JSON.stringify(err, null, 4));
@@ -229,6 +240,7 @@ export class HomePage {
             this.navigateText = "Cancel";
             this.navigateIcon = "close";
             this.showDirections = true;
+            this.showDirections = true;
 
           }
         }
@@ -259,7 +271,10 @@ export class HomePage {
   }
 
   startNavigating(s){
-
+    let load = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    load.present();
     let directionsService = new google.maps.DirectionsService;
     let directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -267,7 +282,8 @@ export class HomePage {
     directionsDisplay.setPanel(this.directionsPanel.nativeElement);
     if (s == false)
     {
-      directionsDisplay.setDirections(null);
+     this.loadMap();
+      load.dismissAll();
       return;
     }
     directionsService.route({
@@ -278,8 +294,11 @@ export class HomePage {
 
       if(status == google.maps.DirectionsStatus.OK){
         directionsDisplay.setDirections(res);
+        load.dismissAll();
       } else {
-        console.warn(status);
+        load.dismissAll();
+        this.alertCtrl.create({title: 'Failed to find route to your designation', buttons: ['OK']}).present();
+        console.log(res);
       }
 
     });
