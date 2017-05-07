@@ -4,6 +4,7 @@ import {File, Geolocation, Hotspot, NativeStorage} from 'ionic-native';
 import {SearchPage} from "../search/search";
 import {API} from "../../util/API";
 import {Device} from "ionic-native";
+import {AuthService} from "../../providers/auth-service";
 
 
 declare var google;
@@ -30,10 +31,10 @@ export class HomePage {
   lon: number;
   currentPosition: any;
   mapType: any = google.maps.MapTypeId.ROADMAP;
+  isLoggedIn : boolean = false;
 
-
-  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API) {
-
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API, private authService: AuthService){
+    this.isLoggedIn = this.authService.isAuthenticated();
     // alert(Device.model);
     Hotspot.getNetConfig().then((res) => {
       console.log(res);
@@ -44,7 +45,15 @@ export class HomePage {
       alert(err.toString());
       return err;
     });
-
+    NativeStorage.getItem('settings')
+      .then(
+        data => {
+          if (data.maps == 'road')
+            this.mapType = google.maps.MapTypeId.ROADMAP;
+          else this.mapType = google.maps.MapTypeId.SATELLITE;
+        }, (err) => {
+          console.log(err);}
+      );
     if (this.params){
       if (this.params.get('distance')) {
         this.distanceValue = this.params.get('distance');
@@ -68,20 +77,11 @@ export class HomePage {
         }, 2000);
 
       }
-
-      NativeStorage.getItem('settings')
-        .then(
-          data => {
-            if (data.maps == 'road')
-              this.mapType = google.maps.MapTypeId.ROADMAP;
-            else this.mapType = google.maps.MapTypeId.SATELLITE;
-          }, (err) => {
-            console.log(err);}
-        );
     }
   }
 
   ionViewDidLoad(){
+
     this.loadMap();
   }
 
@@ -290,5 +290,10 @@ export class HomePage {
         }
       ]
     }).present();
+  }
+
+  verify() {
+    this.isLoggedIn = this.authService.isAuthenticated();
+    return  this.isLoggedIn;
   }
 }
