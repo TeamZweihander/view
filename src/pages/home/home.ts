@@ -1,11 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {NavController, AlertController, ModalController, NavParams} from 'ionic-angular';
-import {File, Geolocation, Hotspot, NativeStorage} from 'ionic-native';
+import {NavController, AlertController, ModalController, NavParams, ToastController} from 'ionic-angular';
+import {File, Geolocation, Hotspot} from 'ionic-native';
 import {SearchPage} from "../search/search";
 import {API} from "../../util/API";
 import {Device} from "ionic-native";
 import {AuthService} from "../../providers/auth-service";
-
+import { Storage } from '@ionic/storage';
 
 declare var google;
 
@@ -32,8 +32,9 @@ export class HomePage {
   currentPosition: any;
   mapType: any = google.maps.MapTypeId.ROADMAP;
   isLoggedIn : boolean = false;
+  showDirections: boolean = false;
 
-  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API, private authService: AuthService){
+  constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API, private authService: AuthService, private storage : Storage, public toastCtrl: ToastController){
     this.isLoggedIn = this.authService.isAuthenticated();
     // alert(Device.model);
     Hotspot.getNetConfig().then((res) => {
@@ -45,15 +46,32 @@ export class HomePage {
       alert(err.toString());
       return err;
     });
-    NativeStorage.getItem('settings')
-      .then(
-        data => {
-          if (data.maps == 'road')
+    // NativeStorage.getItem('settings')
+    //   .then(
+    //     data => {
+    //       if (data.maps == 'road')
+    //         this.mapType = google.maps.MapTypeId.ROADMAP;
+    //       else this.mapType = google.maps.MapTypeId.SATELLITE;
+    //     }, (err) => {
+    //       console.log(err);}
+    //   );
+
+    this.storage.ready().then(() => {
+
+      this.storage.get('settings').then((data) => {
+        alert(data.maps);
+        if (data.maps == 'road')
             this.mapType = google.maps.MapTypeId.ROADMAP;
-          else this.mapType = google.maps.MapTypeId.SATELLITE;
-        }, (err) => {
-          console.log(err);}
-      );
+        else this.mapType = google.maps.MapTypeId.SATELLITE;
+      }).catch((err) => {
+          this.toastCtrl.create({
+            message: 'Failed to retrieve your map settings',
+            showCloseButton: true,
+            closeButtonText: 'Ok'
+          }).present();
+      });
+    });
+
     if (this.params){
       if (this.params.get('distance')) {
         this.distanceValue = this.params.get('distance');
@@ -182,6 +200,7 @@ export class HomePage {
               this.destination = "";
               this.steps = 0;
               this.canNavigate = false;
+              this.showDirections = false;
               this.navigateText = "Navigate";
               this.navigateIcon = "send";
               this.startNavigating(false);
@@ -209,6 +228,7 @@ export class HomePage {
           handler: () => {
             this.navigateText = "Cancel";
             this.navigateIcon = "close";
+            this.showDirections = true;
 
           }
         }

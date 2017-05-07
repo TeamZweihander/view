@@ -17,6 +17,7 @@ import {API} from "../util/API";
 import {Device} from "ionic-native";
 import {Hotspot} from "ionic-native";
 import {SettingsPage} from "../pages/settings/settings";
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -32,7 +33,11 @@ import {SettingsPage} from "../pages/settings/settings";
     SettingsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'NavUP',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
