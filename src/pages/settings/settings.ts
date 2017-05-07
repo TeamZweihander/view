@@ -13,7 +13,6 @@ export class SettingsPage{
   maps: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController)
   {
-
     NativeStorage.getItem('settings')
       .then(
         data => {
