@@ -72,5 +72,9 @@ export class MyApp {
   login() {
     this.nav.push(LoginPage);
   }
+  verify() {
+    this.isLoggedIn = this.authService.isAuthenticated();
+    return this.isLoggedIn;
+  }
 
 }
