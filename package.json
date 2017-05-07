@@ -69,7 +69,8 @@
     "cordova-plugin-android-fingerprint-auth",
     "cordova-plugin-device",
     "cordova-plugin-hotspot",
-    "cordova-plugin-nativestorage"
+    "cordova-plugin-nativestorage",
+    "cordova-sqlite-storage"
   ],
   "cordovaPlatforms": [],
   "description": "NavUP: An Ionic project"
