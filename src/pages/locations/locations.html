@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Points of Interest</ion-title>
+    <button name="filterButton" ion-button icon-only (click)="">
+      <ion-icon></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item ion-item (click)="dismiss(item)" *ngFor="let item of items">
+      <ion-avatar item-left>
+        <ion-icon name="pin"></ion-icon>
+      </ion-avatar>
+      <h2> {{item.name}} </h2>
+      <p>{{item.distance}} meters</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
