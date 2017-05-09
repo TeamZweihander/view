@@ -67,8 +67,6 @@
     "cordova-plugin-camera",
     "de.appplant.cordova.plugin.local-notification",
     "cordova-plugin-android-fingerprint-auth",
-    "cordova-plugin-device",
-    "cordova-plugin-hotspot",
     "cordova-plugin-nativestorage",
     "cordova-sqlite-storage"
   ],
