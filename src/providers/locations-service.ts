@@ -12,9 +12,22 @@ export class LocationsService {
   constructor(public httpInterface: Http) {
   }
 
-  getLocationsList() {
-    
+  private inlocation: LocationModel;
 
+  items = [];
+
+  initializeItems() {
+    this.items = [
+      {name: this.inlocation.name, location: {lat: this.inlocation.lat, lng: this.inlocation.lon}},
+      {name: 'Centenary', location: {lat: 121, lng: 131}},
+      {name: 'IT', location: {lat: 131, lng: 141}},
+      {name: 'EMS', location: {lat: 141, lng: 151}},
+      {name: 'HB', location: {lat: 151, lng: 161}},
+    ];
+  }
+
+  getLocationsList() {
+    return this.items;
   }
 
 }
