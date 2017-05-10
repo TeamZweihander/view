@@ -13,6 +13,7 @@ import { Storage } from '@ionic/storage';
 })
 export class SettingsPage{
   maps: any = 'road';
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private storage: Storage)
   {
     this.storage.ready().then(() => {
