@@ -39,16 +39,19 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public  alertCtrl: AlertController, public modalCtrl: ModalController, public params: NavParams, private api: API, private authService: AuthService, private storage : Storage, public toastCtrl: ToastController, private loadingCtrl: LoadingController){
     this.isLoggedIn = this.authService.isAuthenticated();
-    // alert(Device.model);
-    Hotspot.getNetConfig().then((res) => {
-      console.log(res);
-      // alert(res.deviceMacAddress);
 
-      return res.deviceMacAddress;
-    }).catch((err) => {
-      alert(err.toString());
-      return err;
-    });
+
+
+    // alert(Device.model);
+    // Hotspot.getNetConfig().then((res) => {
+    //   console.log(res);
+    //   // alert(res.deviceMacAddress);
+    //
+    //   return res.deviceMacAddress;
+    // }).catch((err) => {
+    //   alert(err.toString());
+    //   return err;
+    // });
     // NativeStorage.getItem('settings')
     //   .then(
     //     data => {
@@ -110,6 +113,8 @@ export class HomePage {
     setTimeout(()=> {
       this.loadMap();
       load.dismissAll();
+      if (this.isLoggedIn)
+        this.showSavedLocations();
     }, 4000);
   }
 
@@ -325,14 +330,53 @@ export class HomePage {
           handler: data => {
             console.log(data);
             this.addMarker("", this.map.getCenter(), data.title);
+            this.storage.ready().then(() => {
+              this.storage.get('savedLocations').then((d) => {
+                let locations = [];
+                if (d != null)
+                  locations = d;
+                locations.push({name: data.title, location: JSON.stringify(this.map.getCenter())});
+
+                this.storage.set('savedLocations', locations).then((c)=>{
+                  alert("saved")
+                }).catch((err)=>{console.log(JSON.stringify(err))});
+              }).catch((err) => {
+                console.log(JSON.stringify(err));
+              });
+            });
           }
         }
       ]
     }).present();
   }
 
+  showSavedLocations() {
+      this.storage.ready().then(() => {
+        this.storage.get('savedLocations').then((d) => {
+            // this.displayLocations(d);
+        }).catch((err)=> {
+          alert("dedad");
+          console.log(err);
+        })});
+  }
+
+  displayLocations(d)
+  {
+    if (d != null)
+      for (let x of d){
+        let tmp = JSON.parse(x.location);
+        this.addMarker("",  new google.maps.LatLng(tmp.lat, tmp.lng), x.name);
+        alert(x.location);
+      }
+  }
+
   verify() {
     this.isLoggedIn = this.authService.isAuthenticated();
+    // if (this.isLoggedIn)
+    //   setTimeout(function(){
+    //     this.showSavedLocations();
+    //   }, 2500);
+
     return  this.isLoggedIn;
   }
 }
