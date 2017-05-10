@@ -9,8 +9,7 @@
 <ion-content padding>
 
 <ion-card>
-
-
+  <ion-card-header><b>Maps</b></ion-card-header>
   <ion-list>
     <ion-item>
       <ion-icon name="map"></ion-icon>
@@ -18,16 +17,11 @@
       <ion-toggle [(ngModel)]="maps" (ionChange)="mapType()"></ion-toggle>
     </ion-item>
   </ion-list>
-
 </ion-card>
 
-  <ion-title>Notifications</ion-title>
   <ion-card>
-
-
-
+    <ion-card-header><b>Notifications</b></ion-card-header>
     <ion-list>
-
       <ion-item>
         <ion-icon name="email"></ion-icon>
         <ion-label>Email</ion-label>
@@ -36,7 +30,7 @@
 
       <ion-item>
         <ion-icon name="push"></ion-icon>
-        <ion-label>Push Notifications</ion-label>
+        <ion-label>Push</ion-label>
         <ion-toggle></ion-toggle>
       </ion-item>
 
