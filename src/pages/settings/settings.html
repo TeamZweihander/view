@@ -19,25 +19,25 @@
   </ion-list>
 </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="isLoggedIn">
     <ion-card-header><b>Notifications</b></ion-card-header>
     <ion-list>
       <ion-item>
         <ion-icon name="email"></ion-icon>
         <ion-label>Email</ion-label>
-        <ion-toggle></ion-toggle>
+        <ion-toggle [(ngModel)]="email" (ionChange)="notificationUpdate()"></ion-toggle>
       </ion-item>
 
       <ion-item>
         <ion-icon name="push"></ion-icon>
         <ion-label>Push</ion-label>
-        <ion-toggle></ion-toggle>
+        <ion-toggle [(ngModel)]="push" (ionChange)="notificationUpdate()"></ion-toggle>
       </ion-item>
 
       <ion-item>
         <ion-icon name="sms"></ion-icon>
         <ion-label>SMS</ion-label>
-        <ion-toggle></ion-toggle>
+        <ion-toggle [(ngModel)]="sms" (ionChange)="notificationUpdate()"></ion-toggle>
       </ion-item>
 
     </ion-list>
