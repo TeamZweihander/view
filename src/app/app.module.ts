@@ -6,6 +6,7 @@ import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
 import { EventPage } from '../pages/event/event';
 import { EventsListPage } from '../pages/events-list/events-list';
+import {LocationsPage} from '../pages/lcations/locations';
 import { AuthService } from '../providers/auth-service';
 import { EventService } from '../providers/event-service';
 import { NavService } from '../providers/nav-service';
@@ -29,6 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SearchPage,
     EventsListPage,
     EventPage,
+    LocationsPage,
     SanitizeHtml,
     SettingsPage
   ],
@@ -48,7 +50,8 @@ import { IonicStorageModule } from '@ionic/storage';
     EventsListPage,
     EventPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    LocationsPage
   ],
   providers: [StatusBar, SplashScreen, Device, Hotspot, EventService, AuthService, API, NavService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
