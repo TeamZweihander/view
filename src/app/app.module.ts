@@ -6,7 +6,7 @@ import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
 import { EventPage } from '../pages/event/event';
 import { EventsListPage } from '../pages/events-list/events-list';
-import {LocationsPage} from '../pages/lcations/locations';
+import {LocationsPage} from '../pages/locations/locations';
 import { AuthService } from '../providers/auth-service';
 import { EventService } from '../providers/event-service';
 import { NavService } from '../providers/nav-service';
