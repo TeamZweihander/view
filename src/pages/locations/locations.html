@@ -14,10 +14,9 @@
       Saved Locations
     </ion-list-header>
 
-    <button ion-item *ngFor="let item of items" (click)="itemTapped(event, item)">
+    <button ion-item *ngFor="let item of items" (click)="itemTapped(item)">
       <ion-icon name="pin" item-left></ion-icon>
       <h2> {{item.name}} </h2>
-      <p>Distance in meters</p>
     </button>
 
   </ion-list>

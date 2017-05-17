@@ -339,6 +339,7 @@ export class HomePage {
 
                 this.storage.set('savedLocations', locations).then((c)=>{
                   alert("saved")
+                  //Todo post to server
                 }).catch((err)=>{console.log(JSON.stringify(err))});
               }).catch((err) => {
                 console.log(JSON.stringify(err));

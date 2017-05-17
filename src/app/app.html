@@ -22,6 +22,11 @@
         <ion-icon name="calendar"></ion-icon> Events
       </button>
 
+      <button menuClose ion-item *ngIf="isLoggedIn" (click)="slocations()">
+        <ion-icon name="pin"></ion-icon>
+        Points Of Interest
+      </button>
+
       <button menuClose ion-item (click)="settings()">
         <ion-icon name="settings"></ion-icon> Settings
       </button>

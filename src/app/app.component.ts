@@ -9,6 +9,7 @@ import {EventsListPage} from "../pages/events-list/events-list";
 import { AuthService } from "../providers/auth-service";
 import {UserModel} from '../models/user-model';
 import {SettingsPage} from "../pages/settings/settings";
+import {LocationsPage} from "../pages/locations/locations";
 
 @Component({
   templateUrl: 'app.html'
@@ -71,6 +72,10 @@ export class MyApp {
   }
   login() {
     this.nav.push(LoginPage);
+  }
+
+  slocations() {
+    this.nav.push(LocationsPage);
   }
   verify() {
     this.isLoggedIn = this.authService.isAuthenticated();
