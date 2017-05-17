@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Http, RequestOptions, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {UserModel} from '../models/user-model';
@@ -8,44 +8,85 @@ import {UserModel} from '../models/user-model';
 export class AuthService {
   private currentUser: UserModel;
 
-	constructor(public httpInterface: Http) {  }
+	constructor(public http: Http) {  }
 
   public login(credentials) {
-		this.currentUser = this.createUser();
-		if(credentials.remember)
-		{
-			this.persistUser();
-		}
+	  credentials.username = credentials.email;
+    if (credentials.finger)
+    {
+      this.currentUser = new UserModel(1, "Avinash", "tashan.avi@gmail.com", "");
+      return new Observable<boolean>(observer => {
+        observer.next(true);
+      });
+    }
+    let body = JSON.stringify(credentials);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post("/authenticate", body, options)
+      .map(res => {
+        let data = res.json();
+        alert(JSON.stringify(res.json()));
+        this.currentUser = new UserModel(1, data.username, data.email, "");
+        if(this.currentUser){
+          return new Observable<boolean>(observer => {
+            observer.next(true);
+          });
+        }
+        else {
+          return new Observable<boolean>(observer => {
+            observer.next(false);
+          });
+        }
+      })
+      .catch(err=> {
+        console.log(err);
+        return new Observable<boolean>(observer => {
+          observer.next(false);
+        });
+      });
 
-		if(this.currentUser){
-			return new Observable<boolean>(observer => {
-					observer.next(true);
-			});
-		}
-		else {
-			return new Observable<boolean>(observer => {
-					observer.next(false);
-			});
-		}
+		//
+		// if(credentials.remember)
+		// {
+		// 	this.persistUser();
+		// }
+        //
+		//
   }
 
   public register(credentials) {
-		this.currentUser = new UserModel(2, credentials.username, credentials.email, credentials.profileImage);
-		if(credentials.remember)
-		{
-			this.persistUser();
-		}
+    credentials.firstname = credentials.username;
+    credentials.lastname = credentials.username;
+    credentials.cell_number = "0123456789";
+    credentials.mac_address = "0123456789";
 
-		if(this.currentUser){
-			return new Observable<boolean>(observer => {
-					observer.next(true);
-			});
-		}
-		else {
-			return new Observable<boolean>(observer => {
-					observer.next(false);
-			});
-		}
+
+    let body = JSON.stringify(credentials);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    alert(JSON.stringify(credentials));
+    return this.http.post("/api/register", body, options)
+      .map(res => {
+        let data = res.json();
+        alert(JSON.stringify(res.json()));
+        // this.currentUser = new UserModel(1, data.username, data.email, "");
+        if(this.currentUser){
+          return new Observable<boolean>(observer => {
+            observer.next(true);
+          });
+        }
+        else {
+          return new Observable<boolean>(observer => {
+            observer.next(false);
+          });
+        }
+      })
+      .catch(err=> {
+        console.log(err);
+        return new Observable<boolean>(observer => {
+          observer.next(false);
+        });
+      });
   }
 
 	private createUser(){

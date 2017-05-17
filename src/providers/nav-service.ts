@@ -24,14 +24,13 @@ export class NavService {
     items = [];
     initializeItems() {
         this.items = [
-        {name : 'Amsterdam', distance : '420', id : "1", type : "1"},
-        {name : 'Bogota', distance : '666', id : "2", type : "1"},
-        {name : 'Buenos Aires', distance : '420', id : "3", type : "1"},
-        {name : 'Cairo', distance : '666', id : "4", type : "1"},
-        {name : 'Dhaka', distance : '420', id : "5", type : "2"},
-        {name : 'Edinburgh', distance : '666', id : "6", type : "2"},
-        {name : 'Geneva', distance : '420', id : "7", type : "2"},
-        {name : 'Genoa', distance : '666', id : "8", type : "2"}
+        {name : 'University Of Pretoria', distance : '420', id : "1", type : "1"},
+        {name : 'Haloa', distance : '666', id : "2", type : "1"},
+        {name : 'Engineering III', distance : '420', id : "3", type : "1"},
+        {name : 'Adlars', distance : '666', id : "4", type : "1"},
+        {name : 'Oom Gerts', distance : '420', id : "5", type : "2"},
+        {name : 'Sci-Enza', distance : '666', id : "6", type : "2"},
+        {name : 'Steers', distance : '420', id : "7", type : "2"},
         ];
     }
 

@@ -11,7 +11,7 @@ import {AndroidFingerprintAuth} from "ionic-native";
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = {email: '', password: '', remember: 0};
+  registerCredentials = {email: '', password: '', remember: 0, finger: false};
 
   constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
 
@@ -47,6 +47,10 @@ export class LoginPage {
               if (result.withFingerprint) {
                 console.log("Successfully encrypted credentials.");
                 console.log("Encrypted credentials: " + result.token);
+                this.registerCredentials.email = "Admin";
+                this.registerCredentials.password = "P@ssW0rd";
+                this.registerCredentials.finger = true;
+
                 this.login();
               } else if (result.withBackup) {
                 this.login();

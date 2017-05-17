@@ -7,6 +7,7 @@ import { TimeModel } from "../../models/time-model";
 import { LocationModel } from "../../models/location-model";
 import { EventService } from "../../providers/event-service";
 import {LocalNotifications} from "ionic-native";
+import {Http, RequestOptions, Headers} from "@angular/http";
 
 
 /*
@@ -21,10 +22,11 @@ import {LocalNotifications} from "ionic-native";
 })
 export class EventsListPage {
 
-  constructor(private viewCtrl: ViewController, private navCtrl: NavController, private eventSrvc: EventService)
+  constructor(private viewCtrl: ViewController, private navCtrl: NavController, private eventSrvc: EventService, private http: Http)
   {
     this.events = eventSrvc.getEvents();
     LocalNotifications.schedule(eventSrvc.getNotifications());
+
   }
 
   launch(data) {

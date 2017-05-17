@@ -3,6 +3,7 @@ import { HomePage } from '../home/home';
 import { NavController, AlertController, LoadingController, Loading, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import {Camera} from 'ionic-native';
+import {LoginPage} from "../login/login";
 
 @Component({
   selector: 'page-register',
@@ -30,7 +31,7 @@ export class RegisterPage {
                 if (allowed) {
                   setTimeout(() => {
                   this.loading.dismiss();
-                  this.nav.setRoot(HomePage)
+                  this.nav.setRoot(LoginPage)
                   });
                 } else {
                   this.showError("Access Denied");

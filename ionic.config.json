@@ -1,5 +1,19 @@
 {
   "name": "NavUP",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies":[
+    {
+      "path": "/authenticate",
+      "proxyUrl": "http://lungo.cs.up.ac.za:8761/api/user/authenticate"
+    },
+    {
+      "path": "/api/register",
+      "proxyUrl": "http://lungo.cs.up.ac.za:8761/api/user/register"
+    },
+    {
+      "path": "/notification",
+      "proxyUrl": "http://lungo.cs.up.ac.za:8761/api/notification/sendMessage"
+    }
+  ]
 }
